@@ -53,3 +53,4 @@ const server = http.createServer((req, res) => {
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`✨ Casulo Amigurumi está online em: http://localhost:${PORT}`);
 });
+
