@@ -1,0 +1,358 @@
+/* ==========================================================================
+   Casulo Amigurumi - Design Tokens & Luxury Artisanal Stylesheet
+   ========================================================================== */
+
+:root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-accent: 'Outfit', sans-serif;
+
+  /* Color Palette */
+  --c-terracotta: #C86D51;
+  --c-terracotta-dark: #A74E35;
+  --c-terracotta-light: #FBF0EC;
+  --c-honey: #E29938;
+  --c-honey-light: #FEF7ED;
+  --c-sage: #6B8E71;
+  --c-sage-light: #EFF6F1;
+  --c-rose: #DE9E93;
+  --c-rose-light: #FDF4F2;
+  --c-cream: #FCF9F5;
+  --c-cream-card: #FFFFFF;
+  --c-text-main: #2C221E;
+  --c-text-muted: #6E615B;
+  --c-border: #EFE6DC;
+  --c-border-subtle: #F5EFEB;
+  --c-instagram-grad: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(44, 34, 30, 0.04);
+  --shadow-md: 0 8px 24px rgba(44, 34, 30, 0.07);
+  --shadow-lg: 0 16px 40px rgba(44, 34, 30, 0.1);
+  --shadow-floating: 0 20px 48px rgba(200, 109, 81, 0.16);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+}
+
+/* Base Reset & Smooth Scrolling */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--c-cream);
+  color: var(--c-text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Background Subtle Stitch Texture */
+.bg-stitch-pattern {
+  background-image: radial-gradient(var(--c-border) 1px, transparent 1px), radial-gradient(var(--c-border) 1px, var(--c-cream) 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+/* Typography Helpers */
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--c-text-main);
+  letter-spacing: -0.02em;
+}
+
+.font-accent {
+  font-family: var(--font-accent);
+}
+
+/* Instagram Gradient Text & Accents */
+.text-instagram {
+  background: var(--c-instagram-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-instagram {
+  background: var(--c-instagram-grad);
+}
+
+/* Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.glass-nav {
+  background: rgba(252, 249, 245, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(226, 214, 203, 0.6);
+}
+
+/* Buttons and Micro-interactions */
+.btn-primary {
+  background: var(--c-terracotta);
+  color: #FFFFFF;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 8px 20px rgba(200, 109, 81, 0.28);
+}
+
+.btn-primary:hover {
+  background: var(--c-terracotta-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(200, 109, 81, 0.38);
+}
+
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--c-text-main);
+  border: 1px solid var(--c-border);
+  transition: all 0.25s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--c-terracotta);
+  color: var(--c-terracotta);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-instagram {
+  background: var(--c-instagram-grad);
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 22px rgba(220, 39, 67, 0.28);
+}
+
+.btn-instagram:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(220, 39, 67, 0.4);
+}
+
+.btn-whatsapp {
+  background: #25D366;
+  color: #FFFFFF;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.28);
+}
+
+.btn-whatsapp:hover {
+  background: #20BD5A;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(37, 211, 102, 0.4);
+}
+
+/* Floating Animations */
+@keyframes softFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes heartBurst {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-float {
+  animation: softFloat 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: softFloat 7s ease-in-out 2s infinite;
+}
+
+.animate-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Customizer Step Cards */
+.custom-option-card {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.custom-option-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(200, 109, 81, 0.3);
+}
+
+.custom-option-card.active {
+  border-color: var(--c-terracotta);
+  background-color: var(--c-terracotta-light);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Color Palette Swatches */
+.color-swatch-chip {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.color-swatch-chip:hover {
+  transform: scale(1.08);
+}
+
+.color-swatch-chip.active {
+  ring: 3px solid var(--c-terracotta);
+  outline: 3px solid #FFFFFF;
+}
+
+/* Instagram Post Grid Cards */
+.ig-post-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: #FFFFFF;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ig-post-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+.ig-post-card .ig-overlay {
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.ig-post-card:hover .ig-overlay {
+  opacity: 1;
+}
+
+/* Heart Particle Burst */
+.particle-heart {
+  position: absolute;
+  pointer-events: none;
+  animation: floatUpFade 1s forwards ease-out;
+  color: #E0245E;
+  font-size: 20px;
+  z-index: 50;
+}
+
+@keyframes floatUpFade {
+  0% {
+    transform: translate(-50%, 0) scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -60px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+/* Audio Switcher */
+.sound-toggle-btn {
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Lightbox Modal */
+.modal-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  transform: scale(0.92) translateY(20px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-backdrop.active .modal-content {
+  transform: scale(1) translateY(0);
+}
+
+/* Decorative Yarn Trail */
+.yarn-trail {
+  stroke-dasharray: 8 8;
+  animation: dashMove 30s linear infinite;
+}
+
+@keyframes dashMove {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+/* Sticky Bottom Bar for Mobile & Desktop */
+.floating-bottom-dock {
+  box-shadow: 0 -8px 30px rgba(44, 34, 30, 0.08);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--c-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: #DACEC4;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--c-terracotta);
+}
+
+/* Responsive Utilities */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.25rem;
+    line-height: 1.15;
+  }
+}
+
