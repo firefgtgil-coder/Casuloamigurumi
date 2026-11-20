@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Casulo Amigurumi | Peças Afetivas Feitas à Mão com Fio Antialérgico</title>
   <meta name="description" content="Ateliê de amigurumis sob medida em fio 100% algodão hipoalergênico e travas reforçadas anti asfixia. Bonecas personalizadas, personagens e lembranças de maternidade.">
   <meta name="robots" content="index, follow">
@@ -113,18 +113,18 @@
   </a>
 
   <!-- ==========================================================================
-       B7. Barra de Navegação Flutuante com a Logo da Empresa
+       B7. Barra de Navegação Flutuante Responsiva
        ========================================================================== -->
   <header class="floating-navbar flex items-center justify-between">
     
-    <!-- Logo Brand com a Primeira Imagem Oficial -->
-    <a href="#" class="flex items-center gap-3 group" aria-label="Casulo Amigurumi Início">
-      <div class="w-10 h-10 rounded-full overflow-hidden border border-[#E8DFD7] shadow-sm flex-shrink-0 bg-white">
-        <img src="images/logo.jpg" alt="Logo Casulo Amigurumi - Borboleta em Crochê" class="w-full h-full object-cover">
+    <!-- Logo Brand -->
+    <a href="#" class="flex items-center gap-2.5 sm:gap-3 group min-w-0" aria-label="Casulo Amigurumi Início">
+      <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden border border-[#E8DFD7] shadow-sm flex-shrink-0 bg-white">
+        <img src="images/logo.jpg" alt="Logo Casulo Amigurumi" class="w-full h-full object-cover">
       </div>
-      <div>
-        <span class="title-3 text-stone-900 block leading-none font-semibold">Casulo</span>
-        <span class="caption-5 text-[#C86D51] block uppercase tracking-wider font-semibold mt-0.5">Amigurumi Afetivo</span>
+      <div class="min-w-0">
+        <span class="title-3 text-stone-900 block leading-none font-semibold text-sm sm:text-base truncate">Casulo</span>
+        <span class="caption-5 text-[#C86D51] block uppercase tracking-wider font-semibold text-[9px] sm:text-[10px] mt-0.5 truncate">Amigurumi Afetivo</span>
       </div>
     </a>
 
@@ -139,7 +139,7 @@
     </nav>
 
     <!-- Header Action & Audio Toggle -->
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2 sm:gap-3 shrink-0">
       <button id="soundToggleBtn" class="hidden sm:inline-flex items-center gap-1.5 caption-4 text-stone-600 hover:text-stone-900 py-1 px-2.5 rounded-full border border-stone-200 bg-white" title="Alternar efeitos sonoros sutis">
         <i class="ph ph-speaker-high text-xs"></i>
         <span id="soundLabel">Som</span>
@@ -156,7 +156,7 @@
     </div>
   </header>
 
-  <!-- Mobile Drawer Menu com Animação Escalonada -->
+  <!-- Mobile Drawer Menu -->
   <div id="mobileDrawerBackdrop" class="fixed inset-0 bg-stone-900/60 z-50 backdrop-blur-sm hidden transition-opacity"></div>
   <aside id="mobileDrawer" class="drawer-panel fixed top-0 right-0 w-4/5 max-w-sm h-full bg-[#FCF9F5] z-50 shadow-2xl p-6 flex flex-col justify-between transform translate-x-full" aria-label="Menu móvel">
     <div>
@@ -191,69 +191,68 @@
   <main id="main-content">
 
     <!-- ==========================================================================
-         A2 & B5. Hero Section (Headline, Subheadline, CTA Único, Prova e Imagem Real)
+         Hero Section (Responsividade 100% Fluida)
          ========================================================================== -->
-    <section class="pt-28 pb-16 sm:pt-36 sm:pb-24 px-4 sm:px-6 max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <section class="pt-24 pb-12 sm:pt-36 sm:pb-24 px-3 sm:px-6 max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         <!-- Coluna de Texto -->
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+        <div class="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
           
           <!-- Proof Signal Superior -->
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF5F2] border border-[#E8DFD7] text-[#C86D51] caption-3">
-            <i class="ph ph-sparkle text-sm"></i>
-            <span>Ateliê Artesanal • Fio 100% Algodão Puro</span>
+          <div class="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full bg-[#FDF5F2] border border-[#E8DFD7] text-[#C86D51] caption-4 sm:caption-3">
+            <i class="ph ph-sparkle text-sm shrink-0"></i>
+            <span class="truncate">Ateliê Artesanal • Fio 100% Algodão Puro</span>
           </div>
 
-          <!-- Headline com Fórmula {Resultado} sem {Dor} e Gradiente de Texto #000000 -> #666666 -->
-          <h1 class="hero-heading-gradient heading-2 sm:heading-1 max-w-[680px] mx-auto lg:mx-0">
-            Amigurumis afetivos sob medida<br>
-            sem qualquer risco para a pele do seu bebê
+          <!-- Headline com Escala Fluida Responsiva -->
+          <h1 class="hero-heading-gradient text-2xl sm:text-4xl lg:heading-1 max-w-[680px] mx-auto lg:mx-0 font-semibold leading-[1.2]">
+            Amigurumis afetivos sob medida <br class="hidden sm:inline"> sem qualquer risco para a pele do seu bebê
           </h1>
 
-          <!-- Subheadline de 2 Frases Clarificando o Produto e Público (Max Width 680px) -->
-          <p class="body-2 text-stone-600 max-w-[680px] mx-auto lg:mx-0">
+          <!-- Subheadline -->
+          <p class="body-5 sm:body-2 text-stone-600 max-w-[680px] mx-auto lg:mx-0 leading-relaxed px-1">
             Peças exclusivas tecidas à mão com fio 100% algodão hipoalergênico e travas reforçadas anti asfixia.
             O primeiro companheiro de berço que guarda memórias de infância para a vida inteira.
           </p>
 
-          <!-- A4. Apenas UM Botão de Ação Primária Acima da Dobra -->
+          <!-- Ação Primária -->
           <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <a href="#simulador" class="button-md btn-primary-action px-6 py-3 w-full sm:w-auto">
+            <a href="#simulador" class="button-sm sm:button-md btn-primary-action px-6 py-3 w-full sm:w-auto shadow-md">
               <span>Personalizar meu amigurumi agora</span>
-              <i class="ph ph-arrow-right text-base"></i>
+              <i class="ph ph-arrow-right text-base shrink-0"></i>
             </a>
           </div>
 
           <!-- Indicador de Prova Social Imediato -->
-          <div class="pt-4 flex items-center justify-center lg:justify-start gap-3 border-t border-stone-200">
-            <div class="flex text-amber-500 text-sm">
+          <div class="pt-4 flex items-center justify-center lg:justify-start gap-2.5 sm:gap-3 border-t border-stone-200 flex-wrap">
+            <div class="flex text-amber-500 text-sm shrink-0">
               <i class="ph-bold ph-star"></i>
               <i class="ph-bold ph-star"></i>
               <i class="ph-bold ph-star"></i>
               <i class="ph-bold ph-star"></i>
               <i class="ph-bold ph-star"></i>
             </div>
-            <p class="caption-2 text-stone-600">
-              <strong class="font-semibold text-stone-900">4.9 de 5</strong> baseado em mais de 350 famílias atendidas em todo o Brasil
+            <p class="caption-4 sm:caption-2 text-stone-600 text-center sm:text-left">
+              <strong class="font-semibold text-stone-900">4.9 de 5</strong> baseado em mais de 350 famílias atendidas no Brasil
             </p>
           </div>
 
         </div>
 
-        <!-- Coluna Visual com a Foto Real de Destaque (Boneca Emília Artesanal) -->
+        <!-- Coluna Visual com Imagem Real -->
         <div class="lg:col-span-5">
-          <div class="bg-white p-4 rounded-3xl border border-stone-200 shadow-sm max-w-md mx-auto">
-            <div class="rounded-lg overflow-hidden bg-stone-100 aspect-[4/5] relative cursor-pointer" onclick="openLightbox('images/emilia-pose.jpg', 'Boneca Emília Artesanal Sob Medida')">
+          <div class="bg-white p-3 sm:p-4 rounded-2xl sm:rounded-3xl border border-stone-200 shadow-sm max-w-sm sm:max-w-md mx-auto">
+            <div class="rounded-xl overflow-hidden bg-stone-100 aspect-[4/5] relative cursor-pointer group" onclick="openLightbox('images/emilia-pose.jpg', 'Boneca Emília Artesanal Sob Medida')">
               <img 
                 src="images/emilia-pose.jpg" 
                 alt="Boneca Emília em amigurumi tecida à mão pelo Ateliê Casulo"
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               >
-              <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-sm p-3.5 rounded-md border border-stone-200">
-                <span class="caption-3 text-[#C86D51] block uppercase tracking-wider">Peça Feita à Mão Sob Medida</span>
-                <p class="title-4 text-stone-900">Boneca Emília Clássica</p>
-                <p class="caption-2 text-stone-600">Vestido de retalhos, cabelos em lã e olhos reforçados</p>
+              <div class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-sm p-3 rounded-lg border border-stone-200">
+                <span class="caption-5 text-[#C86D51] block uppercase tracking-wider font-semibold">Peça Feita à Mão Sob Medida</span>
+                <p class="title-4 text-stone-900 font-semibold truncate">Boneca Emília Clássica</p>
+                <p class="caption-5 text-stone-600 truncate">Vestido de retalhos e olhos reforçados</p>
               </div>
             </div>
           </div>
@@ -262,27 +261,27 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         A2 #6. Problema e Solução com Fotos de Detalhes Reais
-         ========================================================================== -->
-    <section id="diferenciais" class="py-16 bg-white border-y border-stone-200 scroll-reveal">
+    <!-- ==========================================
+         Diferenciais de Segurança Infantil
+         ========================================== -->
+    <section id="diferenciais" class="py-12 sm:py-16 bg-white border-y border-stone-200 scroll-reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
-        <div class="max-w-[680px] mx-auto text-center space-y-3 mb-12">
-          <span class="caption-3 text-[#C86D51] uppercase tracking-wider">A Escolha Confiável</span>
+        <div class="max-w-[680px] mx-auto text-center space-y-2 sm:space-y-3 mb-8 sm:mb-12">
+          <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider font-semibold">A Escolha Confiável</span>
           <h2 class="heading-4 text-stone-900">Por que o padrão Casulo é diferente de bichinhos industriais?</h2>
-          <p class="body-5 text-stone-600">
+          <p class="body-6 sm:body-5 text-stone-600">
             Brinquedos plásticos quebram e pelúcias sintéticas soltam fiapos que irritam as vias respiratórias. No Casulo, cada ponto é pensado para a saúde e a segurança do seu filho.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           
-          <div class="p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-4">
+          <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-3 sm:space-y-4">
             <div class="w-10 h-10 rounded-full bg-[#FDF5F2] text-[#C86D51] flex items-center justify-center text-lg">
               <i class="ph ph-shield-check"></i>
             </div>
-            <h3 class="title-2 text-stone-900">Fio 100% Algodão Puro</h3>
+            <h3 class="title-3 sm:title-2 text-stone-900">Fio 100% Algodão Puro</h3>
             <p class="body-6 text-stone-600">
               Algodão biológico penteado que não provoca reações alérgicas nem irritações na pele sensível do bebê.
             </p>
@@ -291,11 +290,11 @@
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-4">
+          <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-3 sm:space-y-4">
             <div class="w-10 h-10 rounded-full bg-[#FEF9F0] text-[#E5A852] flex items-center justify-center text-lg">
               <i class="ph ph-lock-key"></i>
             </div>
-            <h3 class="title-2 text-stone-900">Travas Internas Anti Asfixia</h3>
+            <h3 class="title-3 sm:title-2 text-stone-900">Travas Internas Anti Asfixia</h3>
             <p class="body-6 text-stone-600">
               Olhinhos e focinhos fundidos com arruelas de pressão internas que suportam puxões fortes sem se soltarem.
             </p>
@@ -304,11 +303,11 @@
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-4">
+          <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-3 sm:space-y-4">
             <div class="w-10 h-10 rounded-full bg-[#F0F6F2] text-[#7A9A82] flex items-center justify-center text-lg">
               <i class="ph ph-heart"></i>
             </div>
-            <h3 class="title-2 text-stone-900">Fibra Lavável Antiácaro</h3>
+            <h3 class="title-3 sm:title-2 text-stone-900">Fibra Lavável Antiácaro</h3>
             <p class="body-6 text-stone-600">
               Enchimento em fibra siliconada macia que pode ser higienizada em casa mantendo a forma original da peça.
             </p>
@@ -322,13 +321,13 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         B11. Tagline Reveal Section (MANDATÓRIO)
-         ========================================================================== -->
-    <section class="py-24 bg-white border-b border-stone-200 text-center px-4">
+    <!-- ==========================================
+         B11. Tagline Reveal Section
+         ========================================== -->
+    <section class="py-16 sm:py-24 bg-white border-b border-stone-200 text-center px-4">
       <div class="tagline-container">
-        <span class="caption-3 text-[#C86D51] uppercase tracking-wider block mb-4">O Propósito Casulo</span>
-        <h2 id="taglineRevealText" class="heading-3 sm:heading-2 text-stone-900 leading-tight">
+        <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider block mb-3 sm:mb-4 font-semibold">O Propósito Casulo</span>
+        <h2 id="taglineRevealText" class="text-xl sm:text-2xl md:heading-3 lg:heading-2 text-stone-900 leading-snug">
           <span class="tagline-word">Cada</span>
           <span class="tagline-word">ponto</span>
           <span class="tagline-word">tecido</span>
@@ -351,63 +350,60 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         GALERIA DE CRIAÇÕES REAIS (Fotos dos Produtos Enviadas pelo Usuário)
-         ========================================================================== -->
-    <section id="galeria" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto scroll-reveal">
+    <!-- ==========================================
+         GALERIA DE CRIAÇÕES REAIS
+         ========================================== -->
+    <section id="galeria" class="py-12 sm:py-20 px-3 sm:px-6 max-w-7xl mx-auto scroll-reveal">
       
-      <div class="max-w-[680px] mx-auto text-center space-y-3 mb-12">
-        <span class="caption-3 text-[#C86D51] uppercase tracking-wider">Acervo do Ateliê</span>
+      <div class="max-w-[680px] mx-auto text-center space-y-2 sm:space-y-3 mb-8 sm:mb-12">
+        <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider font-semibold">Acervo do Ateliê</span>
         <h2 class="heading-4 text-stone-900">Conheça nossas criações reais feitas à mão</h2>
-        <p class="body-5 text-stone-600">
+        <p class="body-6 sm:body-5 text-stone-600">
           Peças tecidas com paciência e dedicação máxima para presentear ou decorar momentos inesquecíveis.
         </p>
       </div>
 
-      <!-- ==========================================================================
-           DESTAQUE INTERATIVO: ÁLBUM DIGITAL DE BONECAS (38 PEÇAS)
-           ========================================================================== -->
-      <div class="album-hero-banner p-6 sm:p-8 md:p-10 mb-16 bg-white border border-stone-200 rounded-3xl">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <!-- DESTAQUE INTERATIVO: ÁLBUM DIGITAL DE BONECAS -->
+      <div class="album-hero-banner p-4 sm:p-8 md:p-10 mb-10 sm:mb-16 bg-white border border-stone-200 rounded-2xl sm:rounded-3xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
           
-          <!-- Capa Visual do Álbum com Efeito Livro -->
+          <!-- Capa Visual do Álbum -->
           <div class="lg:col-span-5 flex justify-center">
-            <div class="relative cursor-pointer group max-w-sm w-full" onclick="openDollAlbum(0)">
-              <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-4 border-white bg-stone-100 relative transform transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-2xl">
+            <div class="relative cursor-pointer group max-w-xs sm:max-w-sm w-full" onclick="openDollAlbum(0)">
+              <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-xl border-2 sm:border-4 border-white bg-stone-100 relative transform transition-transform duration-500 group-hover:-translate-y-1 group-hover:shadow-2xl">
                 <img src="images/bonecas/boneca-01.jpg" alt="Capa do Álbum de Bonecas Casulo" class="w-full h-full object-cover">
                 
-                <!-- Selo de Livro / Catálogo -->
-                <div class="absolute inset-0 bg-stone-900/35 flex flex-col justify-between p-6 transition-colors group-hover:bg-stone-900/25">
+                <div class="absolute inset-0 bg-stone-900/35 flex flex-col justify-between p-4 sm:p-6 transition-colors group-hover:bg-stone-900/25">
                   <div class="flex items-center justify-between">
-                    <span class="caption-4 bg-[#C86D51] text-white px-3 py-1 rounded-full font-semibold uppercase tracking-wider shadow">
+                    <span class="caption-5 sm:caption-4 bg-[#C86D51] text-white px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full font-semibold uppercase tracking-wider shadow">
                       Edição Oficial
                     </span>
-                    <span class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-stone-900 shadow">
-                      <i class="ph ph-book-open text-xl"></i>
+                    <span class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-stone-900 shadow">
+                      <i class="ph ph-book-open text-base sm:text-xl"></i>
                     </span>
                   </div>
 
-                  <div class="space-y-1 text-white text-left">
-                    <span class="caption-4 block text-stone-200">Catálogo do Ateliê</span>
-                    <h3 class="title-2 text-white font-semibold">Álbum de Bonecas</h3>
-                    <p class="caption-3 text-stone-200">38 Modelos Exclusivos</p>
+                  <div class="space-y-0.5 sm:space-y-1 text-white text-left">
+                    <span class="caption-5 sm:caption-4 block text-stone-200">Catálogo do Ateliê</span>
+                    <h3 class="title-3 sm:title-2 text-white font-semibold">Álbum de Bonecas</h3>
+                    <p class="caption-4 sm:caption-3 text-stone-200">38 Modelos Exclusivos</p>
                   </div>
                 </div>
               </div>
 
               <!-- Mini cards flutuantes de prévia -->
-              <div class="absolute -bottom-3 -right-3 bg-white p-2.5 rounded-xl border border-stone-200 shadow-md flex items-center gap-2">
-                <img src="images/bonecas/boneca-02.jpg" alt="Miniatura 2" class="w-9 h-9 rounded-lg object-cover">
-                <img src="images/bonecas/boneca-03.jpg" alt="Miniatura 3" class="w-9 h-9 rounded-lg object-cover">
-                <img src="images/bonecas/boneca-04.jpg" alt="Miniatura 4" class="w-9 h-9 rounded-lg object-cover">
-                <span class="caption-4 font-bold text-[#C86D51] pl-1">+34</span>
+              <div class="absolute bottom-2 right-2 sm:-bottom-3 sm:-right-3 bg-white p-2 rounded-xl border border-stone-200 shadow-md flex items-center gap-1.5 sm:gap-2">
+                <img src="images/bonecas/boneca-02.jpg" alt="Miniatura 2" class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover">
+                <img src="images/bonecas/boneca-03.jpg" alt="Miniatura 3" class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover">
+                <img src="images/bonecas/boneca-04.jpg" alt="Miniatura 4" class="w-7 h-7 sm:w-9 sm:h-9 rounded-lg object-cover">
+                <span class="caption-4 font-bold text-[#C86D51] pl-0.5 sm:pl-1">+34</span>
               </div>
             </div>
           </div>
 
-          <!-- Conteúdo e Chamada para Abertura -->
-          <div class="lg:col-span-7 space-y-5 text-left">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FDF5F2] border border-[#C86D51]/30 text-[#C86D51] caption-3 font-semibold">
+          <!-- Conteúdo -->
+          <div class="lg:col-span-7 space-y-3 sm:space-y-5 text-left">
+            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FDF5F2] border border-[#C86D51]/30 text-[#C86D51] caption-4 sm:caption-3 font-semibold">
               <i class="ph ph-sparkle"></i> Catálogo Interativo Completo
             </div>
 
@@ -415,28 +411,28 @@
               Folheie nosso Álbum de Bonecas página a página
             </h3>
 
-            <p class="body-5 text-stone-600 leading-relaxed">
+            <p class="body-6 sm:body-5 text-stone-600 leading-relaxed">
               Criamos uma experiência digital onde você pode folhear todas as 38 bonecas reais produzidas pelo ateliê. Cada página apresenta a foto ampliada, altura em centímetros, tipo de fio de algodão hipoalergênico, detalhes artesanais e o valor estimado.
             </p>
 
-            <ul class="space-y-2.5 py-1">
-              <li class="flex items-center gap-2.5 body-6 text-stone-700">
-                <i class="ph ph-check-circle-fill text-[#C86D51] text-base flex-shrink-0"></i>
-                <span>Navegação suave por setas laterais, toque no celular ou teclado</span>
+            <ul class="space-y-2 py-1">
+              <li class="flex items-center gap-2 body-6 text-stone-700 text-xs sm:text-sm">
+                <i class="ph ph-check-circle-fill text-[#C86D51] text-base shrink-0"></i>
+                <span>Navegação suave por toque no celular, setas ou teclado</span>
               </li>
-              <li class="flex items-center gap-2.5 body-6 text-stone-700">
-                <i class="ph ph-check-circle-fill text-[#C86D51] text-base flex-shrink-0"></i>
-                <span>Navegue livremente apenas para apreciar as criações, sem compromisso</span>
+              <li class="flex items-center gap-2 body-6 text-stone-700 text-xs sm:text-sm">
+                <i class="ph ph-check-circle-fill text-[#C86D51] text-base shrink-0"></i>
+                <span>Aprecie livremente sem compromisso de compra</span>
               </li>
-              <li class="flex items-center gap-2.5 body-6 text-stone-700">
-                <i class="ph ph-check-circle-fill text-[#C86D51] text-base flex-shrink-0"></i>
-                <span>Selecione a boneca desejada para encomendar direto no WhatsApp</span>
+              <li class="flex items-center gap-2 body-6 text-stone-700 text-xs sm:text-sm">
+                <i class="ph ph-check-circle-fill text-[#C86D51] text-base shrink-0"></i>
+                <span>Selecione a boneca desejada para encomendar no WhatsApp</span>
               </li>
             </ul>
 
-            <div class="pt-2 flex flex-col sm:flex-row items-center gap-4">
-              <button onclick="openDollAlbum(0)" class="w-full sm:w-auto button-md btn-primary-action inline-flex items-center justify-center gap-2 shadow-md">
-                <i class="ph ph-book-open text-xl"></i>
+            <div class="pt-2 flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
+              <button onclick="openDollAlbum(0)" class="w-full sm:w-auto button-sm sm:button-md btn-primary-action inline-flex items-center justify-center gap-2 shadow-md">
+                <i class="ph ph-book-open text-lg sm:text-xl"></i>
                 <span>Abrir Álbum Digital (38 Peças)</span>
               </button>
               <span class="caption-4 text-stone-500 text-center sm:text-left">
@@ -448,23 +444,24 @@
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Grid de Destaques da Galeria -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
         
-        <!-- Card 1: Boneca Emília Corpo Inteiro -->
+        <!-- Card 1: Boneca Emília -->
         <article class="product-showcase-card flex flex-col justify-between">
           <div class="image-frame aspect-[3/4] bg-stone-100 cursor-pointer" onclick="openLightbox('images/emilia-corpo-inteiro.jpg', 'Boneca Emília Artesanal')">
             <img src="images/emilia-corpo-inteiro.jpg" alt="Boneca Emília corpo inteiro em amigurumi" class="w-full h-full object-cover">
-            <span class="caption-4 absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
+            <span class="caption-5 sm:caption-4 absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
               Boneca Clássica
             </span>
           </div>
-          <div class="p-5 space-y-2">
+          <div class="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
             <h3 class="title-3 text-stone-900">Boneca Emília em Crochê</h3>
-            <p class="body-6 text-stone-600">
+            <p class="body-6 text-stone-600 text-xs sm:text-sm">
               Vestidinho de retalhos com botões aplicados, sapatos contrastantes e cabelinho em lã colorida. Articulada e super macia.
             </p>
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
-              <span class="caption-3 text-[#C86D51]">A partir de R$ 140</span>
+            <div class="pt-2.5 border-t border-stone-100 flex items-center justify-between">
+              <span class="caption-4 sm:caption-3 text-[#C86D51] font-semibold">A partir de R$ 140</span>
               <a href="#simulador" class="button-Xsm btn-primary-action">
                 Encomendar
               </a>
@@ -476,17 +473,17 @@
         <article class="product-showcase-card flex flex-col justify-between">
           <div class="image-frame aspect-[3/4] bg-stone-100 cursor-pointer" onclick="openLightbox('images/hello-kitty.jpg', 'Hello Kitty em Amigurumi')">
             <img src="images/hello-kitty.jpg" alt="Hello Kitty em amigurumi com laço vermelho" class="w-full h-full object-cover">
-            <span class="caption-4 absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
+            <span class="caption-5 sm:caption-4 absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
               Personagens
             </span>
           </div>
-          <div class="p-5 space-y-2">
+          <div class="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
             <h3 class="title-3 text-stone-900">Hello Kitty Clássica</h3>
-            <p class="body-6 text-stone-600">
+            <p class="body-6 text-stone-600 text-xs sm:text-sm">
               Tecida em fio de algodão puro, com macacãozinho vermelho, bigodinhos bordados e o icônico laço vermelho em relevo.
             </p>
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
-              <span class="caption-3 text-[#C86D51]">A partir de R$ 110</span>
+            <div class="pt-2.5 border-t border-stone-100 flex items-center justify-between">
+              <span class="caption-4 sm:caption-3 text-[#C86D51] font-semibold">A partir de R$ 110</span>
               <a href="#simulador" class="button-Xsm btn-primary-action">
                 Encomendar
               </a>
@@ -498,17 +495,17 @@
         <article class="product-showcase-card flex flex-col justify-between">
           <div class="image-frame aspect-[3/4] bg-stone-100 cursor-pointer" onclick="openLightbox('images/my-melody.jpg', 'My Melody em Amigurumi')">
             <img src="images/my-melody.jpg" alt="My Melody em amigurumi com touca rosa" class="w-full h-full object-cover">
-            <span class="caption-4 absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
+            <span class="caption-5 sm:caption-4 absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
               Personagens
             </span>
           </div>
-          <div class="p-5 space-y-2">
+          <div class="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
             <h3 class="title-3 text-stone-900">My Melody Fofinha</h3>
-            <p class="body-6 text-stone-600">
+            <p class="body-6 text-stone-600 text-xs sm:text-sm">
               Orelhinhas longas com touca rosa, laço amarelo e patinhas bordadas em tom rosé. Uma doçura para quartos e colecionadores.
             </p>
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
-              <span class="caption-3 text-[#C86D51]">A partir de R$ 110</span>
+            <div class="pt-2.5 border-t border-stone-100 flex items-center justify-between">
+              <span class="caption-4 sm:caption-3 text-[#C86D51] font-semibold">A partir de R$ 110</span>
               <a href="#simulador" class="button-Xsm btn-primary-action">
                 Encomendar
               </a>
@@ -520,17 +517,17 @@
         <article class="product-showcase-card flex flex-col justify-between">
           <div class="image-frame aspect-[3/4] bg-stone-100 cursor-pointer" onclick="openLightbox('images/kuromi.jpg', 'Kuromi em Amigurumi')">
             <img src="images/kuromi.jpg" alt="Kuromi em amigurumi com capuz preto e caveirinha rosa" class="w-full h-full object-cover">
-            <span class="caption-4 absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
+            <span class="caption-5 sm:caption-4 absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
               Personagens
             </span>
           </div>
-          <div class="p-5 space-y-2">
+          <div class="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
             <h3 class="title-3 text-stone-900">Kuromi Colecionável</h3>
-            <p class="body-6 text-stone-600">
+            <p class="body-6 text-stone-600 text-xs sm:text-sm">
               Touca preta de bobo da corte com caveirinha rosa em relevo, gola de pompons e cauda característica. Acabamento impecável.
             </p>
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
-              <span class="caption-3 text-[#C86D51]">A partir de R$ 110</span>
+            <div class="pt-2.5 border-t border-stone-100 flex items-center justify-between">
+              <span class="caption-4 sm:caption-3 text-[#C86D51] font-semibold">A partir de R$ 110</span>
               <a href="#simulador" class="button-Xsm btn-primary-action">
                 Encomendar
               </a>
@@ -542,17 +539,17 @@
         <article class="product-showcase-card flex flex-col justify-between">
           <div class="image-frame aspect-[3/4] bg-stone-100 cursor-pointer" onclick="openLightbox('images/pintinho-chaveiro.jpg', 'Chaveiro Pintinho de Pelúcia')">
             <img src="images/pintinho-chaveiro.jpg" alt="Chaveiro de pintinho em fio pelúcia super macio" class="w-full h-full object-cover">
-            <span class="caption-4 absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
+            <span class="caption-5 sm:caption-4 absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
               Minis & Chaveiros
             </span>
           </div>
-          <div class="p-5 space-y-2">
+          <div class="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
             <h3 class="title-3 text-stone-900">Chaveiro Pintinho Amigurumi</h3>
-            <p class="body-6 text-stone-600">
+            <p class="body-6 text-stone-600 text-xs sm:text-sm">
               Confeccionado em fio de pelúcia ultrassuave com blush nas bochechas e argola reforçada. Ideal para lembrancinhas de batizado e mochilas.
             </p>
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
-              <span class="caption-3 text-[#C86D51]">A partir de R$ 45</span>
+            <div class="pt-2.5 border-t border-stone-100 flex items-center justify-between">
+              <span class="caption-4 sm:caption-3 text-[#C86D51] font-semibold">A partir de R$ 45</span>
               <a href="#simulador" class="button-Xsm btn-primary-action">
                 Encomendar
               </a>
@@ -564,17 +561,17 @@
         <article class="product-showcase-card flex flex-col justify-between">
           <div class="image-frame aspect-[3/4] bg-stone-100 cursor-pointer" onclick="openLightbox('images/emilia-rosto.jpg', 'Detalhe do acabamento feito à mão')">
             <img src="images/emilia-rosto.jpg" alt="Close no rosto da boneca mostrando a perfeição dos pontos" class="w-full h-full object-cover">
-            <span class="caption-4 absolute top-3 left-3 bg-white/95 px-3 py-1 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
+            <span class="caption-5 sm:caption-4 absolute top-3 left-3 bg-white/95 px-2.5 py-0.5 rounded-full text-stone-900 font-semibold border border-stone-200 shadow-sm">
               Acabamento
             </span>
           </div>
-          <div class="p-5 space-y-2">
+          <div class="p-4 sm:p-5 space-y-1.5 sm:space-y-2">
             <h3 class="title-3 text-stone-900">Riqueza em Cada Ponto</h3>
-            <p class="body-6 text-stone-600">
+            <p class="body-6 text-stone-600 text-xs sm:text-sm">
               Bordados faciais delicados, bochechas coradas com pigmento não tóxico e olhos com travas internas que garantem durabilidade de gerações.
             </p>
-            <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
-              <span class="caption-3 text-[#C86D51]">Padrão Casulo</span>
+            <div class="pt-2.5 border-t border-stone-100 flex items-center justify-between">
+              <span class="caption-4 sm:caption-3 text-[#C86D51] font-semibold">Padrão Casulo</span>
               <a href="#diferenciais" class="button-Xsm btn-secondary-action">
                 Ver Segurança
               </a>
@@ -588,109 +585,110 @@
 
     <!-- ==========================================================================
          SIMULADOR INTERATIVO "MONTE SEU CASULO"
+         (100% RESPONSIVO, SEM VARIÁVEIS QUEBRADAS)
          ========================================================================== -->
-    <section class="section" id="simulador" aria-labelledby="sim-title">
-      <div class="wrap">
+    <section class="py-12 sm:py-20 bg-stone-100/60 border-y border-stone-200" id="simulador" aria-labelledby="sim-title">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6">
         
-        <div class="section-head" style="text-align:center;max-width:720px;margin:0 auto 48px;">
-          <span style="font-size:12px;font-weight:600;text-transform:uppercase;color:var(--p-accent);letter-spacing:0.15em;">
+        <div class="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
+          <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider font-semibold">
             Personalização Exclusiva
           </span>
-          <h2 id="sim-title" style="font-size:clamp(1.8rem, 3.5vw, 2.8rem);margin-top:8px;">
+          <h2 id="sim-title" class="heading-4 sm:heading-3 text-stone-900 mt-2 mb-2 sm:mb-3">
             Monte a sua peça dos sonhos em minutos
           </h2>
-          <p style="color:var(--p-muted);font-size:1.05rem;line-height:1.6;margin-top:10px;">
+          <p class="body-6 sm:body-5 text-stone-600">
             Selecione a categoria, tamanho e paleta. O cálculo de estimativa é feito em tempo real para enviar o briefing completo para o nosso WhatsApp com um clique.
           </p>
         </div>
 
-        <div class="grid" style="align-items:start;">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           
           <!-- Controles (Esquerda) -->
-          <div class="span-7" style="display:flex;flex-direction:column;gap:24px;">
+          <div class="lg:col-span-7 space-y-4 sm:space-y-6">
             
             <!-- Etapa 1: Categoria -->
-            <div style="background:var(--p-surface);padding:24px;border-radius:16px;">
-              <span style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--p-accent);">Passo 1</span>
-              <h3 style="font-size:1.15rem;margin:4px 0 16px;">Qual peça você deseja encomendar?</h3>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-sm">
+              <span class="caption-5 sm:caption-4 text-[#C86D51] font-semibold uppercase tracking-wider block mb-1">Passo 1</span>
+              <h3 class="title-3 sm:title-2 text-stone-900 mb-3 sm:mb-4">Qual peça você deseja encomendar?</h3>
               
-              <div class="grid" style="gap:12px;">
-                <div data-category-choice="boneca" class="simulator-card-option active span-6">
-                  <strong style="font-size:0.95rem;display:block;">👧 Boneca Emília & Clássicas</strong>
-                  <span style="font-size:12px;color:var(--p-muted);">Vestidinho de retalhos e cabelos de lã</span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
+                <div data-category-choice="boneca" class="simulator-card-option active">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">👧 Boneca Emília & Clássicas</strong>
+                  <span class="caption-5 sm:caption-4 text-stone-500">Vestidinho de retalhos e cabelos de lã</span>
                 </div>
-                <div data-category-choice="personagens" class="simulator-card-option span-6">
-                  <strong style="font-size:0.95rem;display:block;">🎀 Personagens (Hello Kitty, Kuromi)</strong>
-                  <span style="font-size:12px;color:var(--p-muted);">Ícones colecionáveis com toucas e laços</span>
+                <div data-category-choice="personagens" class="simulator-card-option">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">🎀 Personagens (Hello Kitty, Kuromi)</strong>
+                  <span class="caption-5 sm:caption-4 text-stone-500">Ícones colecionáveis com toucas e laços</span>
                 </div>
-                <div data-category-choice="chaveiro" class="simulator-card-option span-6">
-                  <strong style="font-size:0.95rem;display:block;">🐥 Minis & Chaveiros de Pelúcia</strong>
-                  <span style="font-size:12px;color:var(--p-muted);">Pintinhos macios para lembranças</span>
+                <div data-category-choice="chaveiro" class="simulator-card-option">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">🐥 Minis & Chaveiros de Pelúcia</strong>
+                  <span class="caption-5 sm:caption-4 text-stone-500">Pintinhos macios para lembranças</span>
                 </div>
-                <div data-category-choice="maternidade" class="simulator-card-option span-6">
-                  <strong style="font-size:0.95rem;display:block;">🍼 Linha Maternidade & Ninho</strong>
-                  <span style="font-size:12px;color:var(--p-muted);">Naninhas e bichos de berço</span>
+                <div data-category-choice="maternidade" class="simulator-card-option">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">🍼 Linha Maternidade & Ninho</strong>
+                  <span class="caption-5 sm:caption-4 text-stone-500">Naninhas e bichos de berço</span>
                 </div>
               </div>
             </div>
 
             <!-- Etapa 2: Tamanho -->
-            <div style="background:var(--p-surface);padding:24px;border-radius:16px;">
-              <span style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--p-accent);">Passo 2</span>
-              <h3 style="font-size:1.15rem;margin:4px 0 16px;">Dimensões da peça:</h3>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-sm">
+              <span class="caption-5 sm:caption-4 text-[#C86D51] font-semibold uppercase tracking-wider block mb-1">Passo 2</span>
+              <h3 class="title-3 sm:title-2 text-stone-900 mb-3 sm:mb-4">Dimensões da peça:</h3>
 
-              <div class="grid" style="gap:12px;">
-                <div data-size-choice="mini" class="simulator-card-option span-4" style="text-align:center;">
-                  <strong>Mini / Lembrança</strong>
-                  <span style="font-size:11px;color:var(--p-muted);display:block;margin-top:4px;">8 a 12 cm</span>
+              <div class="grid grid-cols-3 gap-2 sm:gap-3">
+                <div data-size-choice="mini" class="simulator-card-option text-center p-2.5 sm:p-4">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">Mini</strong>
+                  <span class="caption-5 text-stone-500 block mt-0.5">8 a 12 cm</span>
                 </div>
-                <div data-size-choice="medio" class="simulator-card-option span-4" style="text-align:center;">
-                  <strong>Médio Clássico</strong>
-                  <span style="font-size:11px;color:var(--p-muted);display:block;margin-top:4px;">18 a 22 cm</span>
+                <div data-size-choice="medio" class="simulator-card-option text-center p-2.5 sm:p-4">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">Médio</strong>
+                  <span class="caption-5 text-stone-500 block mt-0.5">18 a 22 cm</span>
                 </div>
-                <div data-size-choice="grande" class="simulator-card-option active span-4" style="text-align:center;">
-                  <strong>Grande Destaque</strong>
-                  <span style="font-size:11px;color:var(--p-muted);display:block;margin-top:4px;">28 a 35 cm (Emília)</span>
+                <div data-size-choice="grande" class="simulator-card-option active text-center p-2.5 sm:p-4">
+                  <strong class="text-xs sm:text-sm font-semibold text-stone-900 block">Grande</strong>
+                  <span class="caption-5 text-stone-500 block mt-0.5">28 a 35 cm</span>
                 </div>
               </div>
             </div>
 
             <!-- Etapa 3: Cores -->
-            <div style="background:var(--p-surface);padding:24px;border-radius:16px;">
-              <span style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--p-accent);">Passo 3</span>
-              <h3 style="font-size:1.15rem;margin:4px 0 16px;">Harmonia de Cores:</h3>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-sm">
+              <span class="caption-5 sm:caption-4 text-[#C86D51] font-semibold uppercase tracking-wider block mb-1">Passo 3</span>
+              <h3 class="title-3 sm:title-2 text-stone-900 mb-3 sm:mb-4">Harmonia de Cores:</h3>
 
-              <div class="grid" style="gap:10px;">
-                <div data-palette-choice="terrosos" class="palette-chip-option active flex items-center justify-between span-6">
-                  <span class="caption-3 text-stone-900">Cores Originais da Peça</span>
-                  <div class="flex gap-1">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
+                <div data-palette-choice="terrosos" class="palette-chip-option active flex items-center justify-between">
+                  <span class="caption-4 sm:caption-3 text-stone-900 font-medium">Cores Originais da Peça</span>
+                  <div class="flex gap-1 shrink-0">
                     <span class="w-3.5 h-3.5 rounded-full bg-[#E5A852]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#C86D51]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#7A9A82]"></span>
                   </div>
                 </div>
 
-                <div data-palette-choice="pasteis" class="palette-chip-option flex items-center justify-between span-6">
-                  <span class="caption-3 text-stone-900">Tons Pastéis & Bebê</span>
-                  <div class="flex gap-1">
+                <div data-palette-choice="pasteis" class="palette-chip-option flex items-center justify-between">
+                  <span class="caption-4 sm:caption-3 text-stone-900 font-medium">Tons Pastéis & Bebê</span>
+                  <div class="flex gap-1 shrink-0">
                     <span class="w-3.5 h-3.5 rounded-full bg-[#F3C4B8]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#B8D7EB]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#DFD0EB]"></span>
                   </div>
                 </div>
 
-                <div data-palette-choice="vivos" class="palette-chip-option flex items-center justify-between span-6">
-                  <span class="caption-3 text-stone-900">Alegre & Solar</span>
-                  <div class="flex gap-1">
+                <div data-palette-choice="vivos" class="palette-chip-option flex items-center justify-between">
+                  <span class="caption-4 sm:caption-3 text-stone-900 font-medium">Alegre & Solar</span>
+                  <div class="flex gap-1 shrink-0">
                     <span class="w-3.5 h-3.5 rounded-full bg-[#F59E0B]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#EF4444]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#10B981]"></span>
                   </div>
                 </div>
 
-                <div data-palette-choice="personalizada" class="palette-chip-option flex items-center justify-between span-6">
-                  <span class="caption-3 text-stone-900">Personalizada (Seu Enxoval)</span>
-                  <div class="flex gap-1">
+                <div data-palette-choice="personalizada" class="palette-chip-option flex items-center justify-between">
+                  <span class="caption-4 sm:caption-3 text-stone-900 font-medium">Personalizada (Enxoval)</span>
+                  <div class="flex gap-1 shrink-0">
                     <span class="w-3.5 h-3.5 rounded-full bg-[#D4C3B3]"></span>
                     <span class="w-3.5 h-3.5 rounded-full bg-[#786C67]"></span>
                   </div>
@@ -699,33 +697,33 @@
             </div>
 
             <!-- Etapa 4: Toques Especiais -->
-            <div style="background:var(--p-surface);padding:24px;border-radius:16px;">
-              <span style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--p-accent);">Passo 4</span>
-              <h3 style="font-size:1.15rem;margin:4px 0 16px;">Toques especiais de carinho:</h3>
+            <div class="bg-white p-4 sm:p-6 rounded-2xl border border-stone-200 shadow-sm">
+              <span class="caption-5 sm:caption-4 text-[#C86D51] font-semibold uppercase tracking-wider block mb-1">Passo 4</span>
+              <h3 class="title-3 sm:title-2 text-stone-900 mb-3 sm:mb-4">Toques especiais de carinho:</h3>
 
-              <div class="space-y-2 pt-1">
+              <div class="space-y-2">
                 <label class="flex items-center justify-between p-3 rounded-xl border border-stone-200 bg-white cursor-pointer hover:bg-stone-50">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" data-extra-choice="nome" checked class="w-4 h-4 text-[#C86D51] rounded border-stone-300">
-                    <span class="body-6 font-medium text-stone-900">Bordado do Nome na Peça</span>
+                  <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <input type="checkbox" data-extra-choice="nome" checked class="w-4 h-4 text-[#C86D51] rounded border-stone-300 shrink-0">
+                    <span class="caption-3 sm:body-6 font-medium text-stone-900 truncate">Bordado do Nome na Peça</span>
                   </div>
-                  <span class="caption-4 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded">Cortesia</span>
+                  <span class="caption-5 sm:caption-4 text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded shrink-0">Cortesia</span>
                 </label>
 
                 <label class="flex items-center justify-between p-3 rounded-xl border border-stone-200 bg-white cursor-pointer hover:bg-stone-50">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" data-extra-choice="caixa" checked class="w-4 h-4 text-[#C86D51] rounded border-stone-300">
-                    <span class="body-6 font-medium text-stone-900">Caixa de Presente Sensorial com Laço</span>
+                  <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <input type="checkbox" data-extra-choice="caixa" checked class="w-4 h-4 text-[#C86D51] rounded border-stone-300 shrink-0">
+                    <span class="caption-3 sm:body-6 font-medium text-stone-900 truncate">Caixa Sensorial com Laço</span>
                   </div>
-                  <span class="caption-4 text-stone-700 bg-stone-100 px-2 py-0.5 rounded">+ R$ 20</span>
+                  <span class="caption-5 sm:caption-4 text-stone-700 bg-stone-100 px-2 py-0.5 rounded shrink-0">+ R$ 20</span>
                 </label>
 
                 <label class="flex items-center justify-between p-3 rounded-xl border border-stone-200 bg-white cursor-pointer hover:bg-stone-50">
-                  <div class="flex items-center gap-3">
-                    <input type="checkbox" data-extra-choice="guizo" class="w-4 h-4 text-[#C86D51] rounded border-stone-300">
-                    <span class="body-6 font-medium text-stone-900">Guizo Sensorial Interno Suave</span>
+                  <div class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+                    <input type="checkbox" data-extra-choice="guizo" class="w-4 h-4 text-[#C86D51] rounded border-stone-300 shrink-0">
+                    <span class="caption-3 sm:body-6 font-medium text-stone-900 truncate">Guizo Sensorial Interno</span>
                   </div>
-                  <span class="caption-4 text-stone-700 bg-stone-100 px-2 py-0.5 rounded">+ R$ 15</span>
+                  <span class="caption-5 sm:caption-4 text-stone-700 bg-stone-100 px-2 py-0.5 rounded shrink-0">+ R$ 15</span>
                 </label>
               </div>
             </div>
@@ -733,55 +731,55 @@
           </div>
 
           <!-- Resumo em Tempo Real (Direita Sticky) -->
-          <div class="span-5 start-8" style="position:sticky;top:100px;">
-            <div style="background:#FFFFFF;border:1px solid rgba(44,28,24,0.12);border-radius:20px;padding:32px;box-shadow:0 12px 36px rgba(44,28,24,0.06);">
+          <div class="lg:col-span-5 lg:sticky lg:top-24">
+            <div class="bg-white border border-stone-200 rounded-2xl p-4 sm:p-7 shadow-md">
               
-              <div style="border-bottom:1px solid rgba(44,28,24,0.08);padding-bottom:16px;margin-bottom:20px;">
-                <span style="font-size:11px;font-weight:600;text-transform:uppercase;color:var(--p-accent);">Resumo do Pedido</span>
-                <h4 id="summaryTitle" style="font-size:1.35rem;margin:4px 0 0;color:var(--p-ink);">Boneca Emília & Personagens Clássicos</h4>
+              <div class="border-b border-stone-200 pb-3 mb-3.5 sm:mb-4">
+                <span class="caption-5 sm:caption-4 text-[#C86D51] font-semibold uppercase tracking-wider block">Resumo do Pedido</span>
+                <h4 id="summaryTitle" class="title-2 sm:title-1 text-stone-900 mt-1 font-semibold leading-tight">Boneca Emília & Personagens Clássicos</h4>
               </div>
 
-              <div style="display:flex;flex-direction:column;gap:14px;font-size:0.95rem;">
+              <div class="space-y-3 text-xs sm:text-sm">
                 <div>
-                  <span style="font-size:12px;color:var(--p-muted);display:block;">Descrição:</span>
-                  <p id="summaryDesc" style="color:var(--p-ink);font-size:13px;line-height:1.4;">Boneca artesanal com vestido em retalhos, botões coloridos e cabelos de lã</p>
+                  <span class="caption-5 text-stone-500 block">Descrição:</span>
+                  <p id="summaryDesc" class="body-6 text-stone-800 text-xs sm:text-sm mt-0.5 leading-snug">Boneca artesanal com vestido em retalhos, botões coloridos e cabelos de lã</p>
                 </div>
 
                 <div class="grid grid-cols-2 gap-2 pt-1">
                   <div>
-                    <span style="font-size:12px;color:var(--p-muted);display:block;">Tamanho:</span>
-                    <strong id="summarySize" style="color:var(--p-ink);font-size:13px;">Grande Destaque (28 a 35 cm)</strong>
+                    <span class="caption-5 text-stone-500 block">Tamanho:</span>
+                    <strong id="summarySize" class="caption-3 sm:title-4 text-stone-900 block truncate">Grande Destaque (28 a 35 cm)</strong>
                   </div>
                   <div>
-                    <span style="font-size:12px;color:var(--p-muted);display:block;">Paleta:</span>
-                    <strong id="summaryPalette" style="color:var(--p-ink);font-size:13px;">Cores Originais da Peça</strong>
+                    <span class="caption-5 text-stone-500 block">Paleta:</span>
+                    <strong id="summaryPalette" class="caption-3 sm:title-4 text-stone-900 block truncate">Cores Originais da Peça</strong>
                   </div>
                 </div>
 
                 <div class="pt-1">
-                  <span style="font-size:12px;color:var(--p-muted);display:block;margin-bottom:4px;">Toques Adicionados:</span>
-                  <div id="summaryExtras"></div>
+                  <span class="caption-5 text-stone-500 block mb-1">Toques Adicionados:</span>
+                  <div id="summaryExtras" class="caption-4 text-stone-700 space-y-0.5"></div>
                 </div>
 
-                <div style="border-top:1px solid rgba(44,28,24,0.08);padding-top:14px;display:flex;justify-content:space-between;align-items:baseline;">
+                <div class="border-t border-stone-200 pt-3 flex items-baseline justify-between gap-2">
                   <div>
-                    <span style="font-size:11px;color:var(--p-muted);display:block;">Tempo de confecção:</span>
-                    <strong id="summaryTime" style="font-size:13px;color:var(--p-ink);">10 a 15 dias úteis</strong>
+                    <span class="caption-5 text-stone-500 block">Confecção:</span>
+                    <strong id="summaryTime" class="caption-3 sm:title-4 text-stone-900">10 a 15 dias úteis</strong>
                   </div>
-                  <div style="text-align:right;">
-                    <span style="font-size:11px;color:var(--p-muted);display:block;">Estimativa base:</span>
-                    <strong id="summaryPrice" style="font-size:1.4rem;color:var(--p-accent);font-family:var(--font-display);">R$ 223 a R$ 339</strong>
+                  <div class="text-right">
+                    <span class="caption-5 text-stone-500 block">Estimativa base:</span>
+                    <strong id="summaryPrice" class="title-1 sm:heading-4 text-[#C86D51] font-bold">R$ 223 a R$ 339</strong>
                   </div>
                 </div>
               </div>
 
               <!-- Botão Formatado para WhatsApp -->
-              <div style="margin-top:24px;">
-                <button id="simSendOrderBtn" type="button" class="btn btn--primary" style="width:100%;justify-content:center;padding:14px;font-size:1rem;border-radius:12px;">
-                  <i class="ph ph-whatsapp-logo text-lg"></i>
+              <div class="mt-4 sm:mt-5">
+                <button id="simSendOrderBtn" type="button" class="btn-primary-action w-full justify-center py-3 sm:py-3.5 px-4 text-xs sm:text-sm font-semibold shadow-md">
+                  <i class="ph ph-whatsapp-logo text-lg shrink-0"></i>
                   <span>Enviar Pedido pelo WhatsApp</span>
                 </button>
-                <p style="font-size:11px;color:var(--p-muted);text-align:center;margin-top:10px;">
+                <p class="caption-5 text-stone-500 text-center mt-2">
                   ✓ Fotos e vídeos enviados para sua aprovação antes do envio
                 </p>
               </div>
@@ -794,47 +792,47 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         A2 #8. Como Funciona (3 Passos Estritos)
-         ========================================================================== -->
-    <section id="como-funciona" class="py-20 bg-white border-y border-stone-200 scroll-reveal">
+    <!-- ==========================================
+         A2 #8. Como Funciona (3 Passos)
+         ========================================== -->
+    <section id="como-funciona" class="py-12 sm:py-20 bg-white border-y border-stone-200 scroll-reveal">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         
-        <div class="max-w-[680px] mx-auto text-center space-y-3 mb-16">
-          <span class="caption-3 text-[#C86D51] uppercase tracking-wider">Transparência Total</span>
+        <div class="max-w-[680px] mx-auto text-center space-y-2 sm:space-y-3 mb-8 sm:mb-16">
+          <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider font-semibold">Transparência Total</span>
           <h2 class="heading-4 text-stone-900">Como funciona a sua encomenda em 3 passos</h2>
-          <p class="body-5 text-stone-600">
+          <p class="body-6 sm:body-5 text-stone-600">
             Da escolha do modelo até a chegada da encomenda perfumada na sua casa.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-8">
           
-          <div class="p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-3">
-            <span class="caption-3 font-semibold px-2.5 py-1 rounded-full bg-stone-900 text-white inline-block">
+          <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-2.5 sm:space-y-3">
+            <span class="caption-4 sm:caption-3 font-semibold px-2.5 py-0.5 sm:py-1 rounded-full bg-stone-900 text-white inline-block">
               Passo 1
             </span>
-            <h3 class="title-2 text-stone-900">Defina a sua ideia</h3>
+            <h3 class="title-3 sm:title-2 text-stone-900">Defina a sua ideia</h3>
             <p class="body-6 text-stone-600">
               Escolha a peça no simulador ou envie a sua referência no WhatsApp definindo o modelo, tamanho, paleta e nome para o bordado.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-3">
-            <span class="caption-3 font-semibold px-2.5 py-1 rounded-full bg-stone-900 text-white inline-block">
+          <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-2.5 sm:space-y-3">
+            <span class="caption-4 sm:caption-3 font-semibold px-2.5 py-0.5 sm:py-1 rounded-full bg-stone-900 text-white inline-block">
               Passo 2
             </span>
-            <h3 class="title-2 text-stone-900">Confecção e aprovação</h3>
+            <h3 class="title-3 sm:title-2 text-stone-900">Confecção e aprovação</h3>
             <p class="body-6 text-stone-600">
               A artesã produz sua peça ponto por ponto e envia fotos reais em alta definição para você aprovar antes de embalar.
             </p>
           </div>
 
-          <div class="p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-3">
-            <span class="caption-3 font-semibold px-2.5 py-1 rounded-full bg-stone-900 text-white inline-block">
+          <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-[#FCF9F5] space-y-2.5 sm:space-y-3">
+            <span class="caption-4 sm:caption-3 font-semibold px-2.5 py-0.5 sm:py-1 rounded-full bg-stone-900 text-white inline-block">
               Passo 3
             </span>
-            <h3 class="title-2 text-stone-900">Entrega com rastreio</h3>
+            <h3 class="title-3 sm:title-2 text-stone-900">Entrega com rastreio</h3>
             <p class="body-6 text-stone-600">
               Sua peça é embalada com papel de seda, aroma suave e enviada com código de rastreamento direto para o seu celular.
             </p>
@@ -845,51 +843,51 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         A2 #9. Prova Social (Depoimentos Reais)
-         ========================================================================== -->
-    <section id="depoimentos" class="py-20 px-4 sm:px-6 max-w-7xl mx-auto scroll-reveal">
-      <div class="max-w-[680px] mx-auto text-center space-y-3 mb-16">
-        <span class="caption-3 text-[#C86D51] uppercase tracking-wider">Depoimentos Verificados</span>
+    <!-- ==========================================
+         A2 #9. Prova Social (Depoimentos)
+         ========================================== -->
+    <section id="depoimentos" class="py-12 sm:py-20 px-3 sm:px-6 max-w-7xl mx-auto scroll-reveal">
+      <div class="max-w-[680px] mx-auto text-center space-y-2 sm:space-y-3 mb-8 sm:mb-16">
+        <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider font-semibold">Depoimentos Verificados</span>
         <h2 class="heading-4 text-stone-900">O carinho de quem já recebeu uma peça Casulo</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         
-        <div class="p-6 rounded-2xl border border-stone-200 bg-white space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
+        <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-white space-y-3 sm:space-y-4 flex flex-col justify-between">
+          <div class="space-y-2.5 sm:space-y-3">
             <div class="flex text-amber-500 text-sm">★★★★★</div>
             <p class="body-6 text-stone-700">
               "Encomendei a boneca Emília para a minha filha. Quando a caixa chegou com aquele cheirinho maravilhoso e cada detalhe dos botões no vestidinho, nos emocionamos muito! O acabamento é de uma perfeição rara."
             </p>
           </div>
-          <div class="pt-3 border-t border-stone-100">
+          <div class="pt-2.5 sm:pt-3 border-t border-stone-100">
             <p class="title-5 text-stone-900">Mariana Costa</p>
             <p class="caption-5 text-stone-500">Mãe da Alice • São Paulo, SP</p>
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl border border-stone-200 bg-white space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
+        <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-white space-y-3 sm:space-y-4 flex flex-col justify-between">
+          <div class="space-y-2.5 sm:space-y-3">
             <div class="flex text-amber-500 text-sm">★★★★★</div>
             <p class="body-6 text-stone-700">
               "Comprei o chaveirinho de pintinho de pelúcia para dar de lembrança. Ele é incrivelmente macio e bem estruturado, todo mundo no trabalho me perguntou onde eu mandei fazer!"
             </p>
           </div>
-          <div class="pt-3 border-t border-stone-100">
+          <div class="pt-2.5 sm:pt-3 border-t border-stone-100">
             <p class="title-5 text-stone-900">Rodrigo Lemos</p>
             <p class="caption-5 text-stone-500">Curitiba, PR</p>
           </div>
         </div>
 
-        <div class="p-6 rounded-2xl border border-stone-200 bg-white space-y-4 flex flex-col justify-between">
-          <div class="space-y-3">
+        <div class="p-4 sm:p-6 rounded-2xl border border-stone-200 bg-white space-y-3 sm:space-y-4 flex flex-col justify-between">
+          <div class="space-y-2.5 sm:space-y-3">
             <div class="flex text-amber-500 text-sm">★★★★★</div>
             <p class="body-6 text-stone-700">
               "A My Melody e a Kuromi que pedi vieram impecáveis, exatamente como nas fotos. O atendimento pelo WhatsApp é super atencioso e o envio foi muito rápido."
             </p>
           </div>
-          <div class="pt-3 border-t border-stone-100">
+          <div class="pt-2.5 sm:pt-3 border-t border-stone-100">
             <p class="title-5 text-stone-900">Dra. Camila Alencar</p>
             <p class="caption-5 text-stone-500">Belo Horizonte, MG</p>
           </div>
@@ -898,96 +896,76 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         A2 #10 & #11. FAQ e Quebra de Objeções (8 Perguntas Diretas)
-         ========================================================================== -->
-    <section id="faq" class="py-20 bg-white border-y border-stone-200 scroll-reveal">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <!-- ==========================================
+         A2 #10 & #11. FAQ e Dúvidas
+         ========================================== -->
+    <section id="faq" class="py-12 sm:py-20 bg-white border-y border-stone-200 scroll-reveal">
+      <div class="max-w-4xl mx-auto px-3 sm:px-6">
         
-        <div class="text-center space-y-3 mb-14">
-          <span class="caption-3 text-[#C86D51] uppercase tracking-wider">Dúvidas Frequentes</span>
+        <div class="text-center space-y-2 sm:space-y-3 mb-8 sm:mb-14">
+          <span class="caption-4 sm:caption-3 text-[#C86D51] uppercase tracking-wider font-semibold">Dúvidas Frequentes</span>
           <h2 class="heading-4 text-stone-900">Perguntas sobre a confecção e envio</h2>
         </div>
 
-        <div class="space-y-3">
+        <div class="space-y-2.5 sm:space-y-3">
           
           <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Quanto tempo leva para o meu amigurumi ser confeccionado?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
+            <button class="faq-trigger w-full p-3.5 sm:p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
+              <span class="pr-2 leading-snug">Quanto tempo leva para o meu amigurumi ser confeccionado?</span>
+              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300 shrink-0"></i>
             </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
+            <div class="hidden px-3.5 sm:px-4 pb-3.5 sm:pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
               O prazo médio de produção artesanal varia entre 7 a 14 dias úteis, a depender dos detalhes e tamanho da peça. Se você possui uma data comemorativa próxima (como chá de bebê ou aniversário), nós ajustamos a agenda para atender a tempo.
             </div>
           </div>
 
           <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Os amigurumis são seguros para bebês recém nascidos?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
+            <button class="faq-trigger w-full p-3.5 sm:p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
+              <span class="pr-2 leading-snug">Os amigurumis são seguros para bebês recém nascidos?</span>
+              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300 shrink-0"></i>
             </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
+            <div class="hidden px-3.5 sm:px-4 pb-3.5 sm:pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
               Sim, com total segurança. Utilizamos somente fios 100% algodão penteado (que não soltam fiapos nem penugem) e olhos com travas internas de pressão que são fundidas por dentro, impossíveis de serem engolidas. Para recém nascidos, também disponibilizamos a opção de olhinhos bordados.
             </div>
           </div>
 
           <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Como posso higienizar o amigurumi sem estragar os pontos?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
+            <button class="faq-trigger w-full p-3.5 sm:p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
+              <span class="pr-2 leading-snug">Como posso higienizar o amigurumi sem estragar os pontos?</span>
+              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300 shrink-0"></i>
             </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
+            <div class="hidden px-3.5 sm:px-4 pb-3.5 sm:pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
               A peça acompanha um guia impresso com as orientações: recomendamos lavagem manual com água fria e sabão neutro para bebês, sem torcer (apenas pressionando suavemente com uma toalha para tirar o excesso de água) e secagem à sombra na horizontal.
             </div>
           </div>
 
           <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Posso escolher cores diferentes e bordar o nome?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
+            <button class="faq-trigger w-full p-3.5 sm:p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
+              <span class="pr-2 leading-snug">Posso escolher cores diferentes e bordar o nome?</span>
+              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300 shrink-0"></i>
             </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
+            <div class="hidden px-3.5 sm:px-4 pb-3.5 sm:pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
               Sim. Você pode escolher a paleta que melhor harmoniza com o quarto do bebê. O bordado do nome na roupinha ou na peça é cortesia em todos os pedidos da linha maternidade.
             </div>
           </div>
 
           <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Como vejo o resultado antes do pacote ser postado?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
+            <button class="faq-trigger w-full p-3.5 sm:p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
+              <span class="pr-2 leading-snug">Como vejo o resultado antes do pacote ser postado?</span>
+              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300 shrink-0"></i>
             </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
+            <div class="hidden px-3.5 sm:px-4 pb-3.5 sm:pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
               Assim que a confecção é finalizada, enviamos fotos e vídeos detalhados no seu WhatsApp. A peça só é embalada e despachada após a sua aprovação e satisfação completa.
             </div>
           </div>
 
           <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Como funciona a entrega e o frete para a minha cidade?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
+            <button class="faq-trigger w-full p-3.5 sm:p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
+              <span class="pr-2 leading-snug">Como funciona a entrega e o frete para a minha cidade?</span>
+              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300 shrink-0"></i>
             </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
+            <div class="hidden px-3.5 sm:px-4 pb-3.5 sm:pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
               Enviamos para todas as regiões do Brasil via Correios e transportadoras com seguro de entrega. Assim que o pacote é postado, você recebe o código de rastreamento para acompanhar a entrega.
-            </div>
-          </div>
-
-          <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Posso pedir personagens ou bonecas de outras histórias?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
-            </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
-              Sim! Além da Emília, Hello Kitty e Kuromi, criamos projetos personalizados do zero com base em fotos de referência de outros contos, desenhos e desenhos animados.
-            </div>
-          </div>
-
-          <div class="border border-stone-200 rounded-xl bg-stone-50 overflow-hidden">
-            <button class="faq-trigger w-full p-4 text-left flex items-center justify-between title-4 text-stone-900 hover:text-[#C86D51]" aria-expanded="false">
-              <span>Quais são as opções de pagamento?</span>
-              <i class="ph ph-caret-down text-base text-stone-400 faq-icon transition-transform duration-300"></i>
-            </button>
-            <div class="hidden px-4 pb-4 body-6 text-stone-600 border-t border-stone-200/60 pt-3">
-              Aceitamos Pix com confirmação imediata e cartões de crédito com parcelamento em até 3 vezes sem juros.
             </div>
           </div>
 
@@ -996,28 +974,28 @@
       </div>
     </section>
 
-    <!-- ==========================================================================
-         A2 #12. Final CTA (Idêntico ao Hero)
-         ========================================================================== -->
-    <section class="py-20 bg-[#C86D51] text-white scroll-reveal">
-      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-6">
+    <!-- ==========================================
+         A2 #12. Final CTA
+         ========================================== -->
+    <section class="py-14 sm:py-20 bg-[#C86D51] text-white scroll-reveal">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center space-y-4 sm:space-y-6">
         
-        <span class="caption-3 uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-white/20 inline-block font-semibold">
+        <span class="caption-4 sm:caption-3 uppercase tracking-wider px-3 py-1 rounded-full bg-white/20 inline-block font-semibold">
           Vagas Limitadas na Agenda Mensal
         </span>
 
-        <h2 class="heading-3 sm:heading-2 max-w-[680px] mx-auto text-white">
+        <h2 class="text-2xl sm:heading-2 max-w-[680px] mx-auto text-white leading-tight">
           Pronto para ter uma peça que guarda uma história inesquecível?
         </h2>
 
-        <p class="body-2 text-white/95 max-w-[680px] mx-auto">
+        <p class="body-5 sm:body-2 text-white/95 max-w-[680px] mx-auto">
           As encomendas são limitadas mês a mês para garantir a dedicação máxima e a perfeição de cada pontinho feito à mão.
         </p>
 
         <div class="pt-2">
-          <a href="#simulador" class="button-md bg-white text-stone-900 hover:bg-stone-100 px-6 py-3 rounded-full inline-flex items-center gap-2 font-semibold">
+          <a href="#simulador" class="button-sm sm:button-md bg-white text-stone-900 hover:bg-stone-100 px-6 py-3 rounded-full inline-flex items-center gap-2 font-semibold shadow-md">
             <span>Personalizar meu amigurumi agora</span>
-            <i class="ph ph-arrow-right text-base"></i>
+            <i class="ph ph-arrow-right text-base shrink-0"></i>
           </a>
         </div>
 
@@ -1026,34 +1004,34 @@
 
   </main>
 
-  <!-- ==========================================================================
-       Rodapé Completo com a Logo da Empresa e Links Legais
-       ========================================================================== -->
-  <footer class="bg-stone-900 text-stone-400 py-12 border-t border-stone-800">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8">
+  <!-- ==========================================
+       Rodapé Completo
+       ========================================== -->
+  <footer class="bg-stone-900 text-stone-400 py-10 sm:py-12 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
       
-      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-stone-800">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 sm:pb-8 border-b border-stone-800">
         
         <div class="flex items-center gap-3">
-          <img src="images/logo.jpg" alt="Logo Casulo Amigurumi" class="w-10 h-10 rounded-full object-cover border border-stone-700">
+          <img src="images/logo.jpg" alt="Logo Casulo Amigurumi" class="w-9 h-9 sm:w-10 sm:h-10 rounded-full object-cover border border-stone-700 shrink-0">
           <div>
-            <span class="title-3 text-white block">Casulo Amigurumi</span>
-            <span class="caption-5 text-stone-400 block">Ateliê Artesanal de Peças Afetivas</span>
+            <span class="title-3 text-white block text-sm sm:text-base">Casulo Amigurumi</span>
+            <span class="caption-5 text-stone-400 block text-[10px] sm:text-xs">Ateliê Artesanal de Peças Afetivas</span>
           </div>
         </div>
 
-        <nav class="flex flex-wrap items-center justify-center gap-6 caption-2">
+        <nav class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 caption-2 text-xs sm:text-sm">
           <a href="#galeria" class="hover:text-white transition-colors">Peças Reais</a>
           <a href="#diferenciais" class="hover:text-white transition-colors">Segurança</a>
           <a href="#simulador" class="hover:text-white transition-colors">Simulador</a>
           <a href="#faq" class="hover:text-white transition-colors">Dúvidas</a>
-          <button onclick="openLegalModal('privacidade')" class="hover:text-white transition-colors">Política de Privacidade</button>
-          <button onclick="openLegalModal('termos')" class="hover:text-white transition-colors">Termos de Encomenda</button>
+          <button onclick="openLegalModal('privacidade')" class="hover:text-white transition-colors">Privacidade</button>
+          <button onclick="openLegalModal('termos')" class="hover:text-white transition-colors">Termos</button>
         </nav>
 
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 caption-4 text-stone-500 text-center sm:text-left">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 caption-4 text-stone-500 text-center sm:text-left text-[11px] sm:text-xs">
         <p>© 2026 Casulo Amigurumi. Todos os direitos reservados.</p>
         <p>Fios 100% algodão hipoalergênicos • Travas reforçadas • Envio para todo o Brasil</p>
       </div>
@@ -1063,15 +1041,15 @@
 
   <!-- Modal para Políticas Legais -->
   <div id="legalModalBackdrop" class="fixed inset-0 bg-stone-900/60 z-50 backdrop-blur-sm hidden"></div>
-  <div id="legalModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-    <div class="bg-white rounded-2xl max-w-lg w-full p-6 space-y-4 border border-stone-200 shadow-2xl relative">
+  <div id="legalModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 hidden">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-5 sm:p-6 space-y-4 border border-stone-200 shadow-2xl relative">
       <div class="flex items-center justify-between pb-3 border-b border-stone-200">
         <h3 id="legalModalTitle" class="title-2 text-stone-900">Documento Legal</h3>
         <button id="closeLegalModalBtn" class="p-1 text-stone-500 hover:text-stone-900">
           <i class="ph ph-x text-xl"></i>
         </button>
       </div>
-      <div id="legalModalBody" class="py-2"></div>
+      <div id="legalModalBody" class="py-2 text-xs sm:text-sm text-stone-700 leading-relaxed max-h-[60vh] overflow-y-auto"></div>
       <div class="pt-3 border-t border-stone-200 text-right">
         <button onclick="document.getElementById('legalModal').classList.add('hidden'); document.getElementById('legalModalBackdrop').classList.add('hidden');" class="button-sm btn-secondary-action">
           Fechar
@@ -1080,9 +1058,9 @@
     </div>
   </div>
 
-  <!-- Lightbox Modal para Ampliar Imagens Reais -->
+  <!-- Lightbox Modal -->
   <div id="lightboxBackdrop" class="fixed inset-0 bg-stone-900/80 z-50 backdrop-blur-sm hidden"></div>
-  <div id="imageLightboxModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+  <div id="imageLightboxModal" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 hidden">
     <div class="relative bg-white rounded-2xl max-w-2xl w-full overflow-hidden shadow-2xl border border-stone-200">
       <button id="closeLightboxBtn" class="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-stone-900/70 hover:bg-stone-900 text-white flex items-center justify-center">
         <i class="ph ph-x text-lg"></i>
@@ -1090,51 +1068,55 @@
       <div class="aspect-[4/5] sm:aspect-square bg-stone-100">
         <img id="lightboxImg" src="" alt="Amigurumi Ampliado" class="w-full h-full object-contain bg-stone-50">
       </div>
-      <div class="p-4 bg-white border-t border-stone-200 flex items-center justify-between">
-        <p id="lightboxTitle" class="title-4 text-stone-900"></p>
-        <a href="#simulador" onclick="document.getElementById('imageLightboxModal').classList.add('hidden'); document.getElementById('lightboxBackdrop').classList.add('hidden');" class="button-Xsm btn-primary-action">
-          Personalizar no Simulador
+      <div class="p-3 sm:p-4 bg-white border-t border-stone-200 flex items-center justify-between gap-2">
+        <p id="lightboxTitle" class="title-4 text-stone-900 truncate"></p>
+        <a href="#simulador" onclick="document.getElementById('imageLightboxModal').classList.add('hidden'); document.getElementById('lightboxBackdrop').classList.add('hidden');" class="button-Xsm btn-primary-action shrink-0">
+          Personalizar
         </a>
       </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       ÁLBUM DIGITAL DE BONECAS (38 PEÇAS) - MODAL INTERATIVO
-       Conforme requisitos do usuário:
-       - Folheia página a página
-       - Ficha técnica completa (nome, altura, tipo de linha, características, valor aprox)
-       - Navegação livre sem obrigação de compra
-       - Botão de encomenda via WhatsApp em posição que não atrapalha a navegação
-       - Diretrizes landing-page-design: sem hífens em textos corridos, Poppins sem itálicos
+       ÁLBUM DIGITAL DE BONECAS (38 PEÇAS) - MODAL 100% RESPONSIVO
        ========================================================================== -->
   <div id="albumBackdrop" class="fixed inset-0 bg-stone-950/80 z-50 backdrop-blur-md hidden transition-opacity" onclick="closeDollAlbum()"></div>
   <div id="dollAlbumModal" class="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 hidden select-none" role="dialog" aria-modal="true" aria-labelledby="albumDollName">
     
-    <div class="relative w-full max-w-4xl bg-[#FCF9F5] rounded-3xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col max-h-[96vh]">
+    <div class="relative w-full max-w-4xl bg-[#FCF9F5] rounded-2xl sm:rounded-3xl shadow-2xl border border-stone-200 overflow-hidden flex flex-col max-h-[96vh]">
       
-      <!-- Barra Superior: Identificação, Contador e Fechar -->
-      <div class="px-5 sm:px-8 py-4 bg-white border-b border-stone-200 flex items-center justify-between gap-4">
-        <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-full overflow-hidden border border-stone-200 flex-shrink-0 shadow-sm">
+      <!-- Barra Superior: Controles Integrados para Mobile e Desktop -->
+      <div class="px-3 sm:px-8 py-3 sm:py-4 bg-white border-b border-stone-200 flex items-center justify-between gap-2 sm:gap-4">
+        
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div class="w-8 h-8 rounded-full overflow-hidden border border-stone-200 shrink-0 shadow-sm">
             <img src="images/logo.jpg" alt="Casulo Amigurumi" class="w-full h-full object-cover">
           </div>
-          <div>
-            <span class="caption-5 text-[#C86D51] font-semibold uppercase tracking-wider block">Álbum Digital Oficial</span>
-            <p class="caption-2 font-semibold text-stone-900">Catálogo de Bonecas do Ateliê</p>
+          <div class="min-w-0">
+            <span class="caption-5 text-[#C86D51] font-semibold uppercase tracking-wider block text-[9px] sm:text-[10px] truncate">Álbum Digital Oficial</span>
+            <p class="caption-3 font-semibold text-stone-900 truncate text-xs sm:text-sm">Catálogo de Bonecas (38 Peças)</p>
           </div>
         </div>
 
-        <!-- Indicador de Página e Botão Fechar -->
-        <div class="flex items-center gap-3">
-          <div class="bg-stone-100 px-3.5 py-1 rounded-full border border-stone-200 text-stone-800 caption-3 font-medium">
-            Página <span id="albumPageCurrent" class="font-bold text-[#C86D51]">1</span> de <span id="albumPageTotal">38</span>
+        <!-- Indicador de Página com Botões de Navegação Mobile Embutidos -->
+        <div class="flex items-center gap-2 shrink-0">
+          <div class="flex items-center gap-1 bg-stone-100 px-2 sm:px-3 py-1 rounded-full border border-stone-200 text-stone-800 caption-4 sm:caption-3 font-medium">
+            <button onclick="prevAlbumPage()" class="md:hidden p-1 text-stone-700 hover:text-[#C86D51]" aria-label="Boneca anterior">
+              <i class="ph ph-caret-left text-base"></i>
+            </button>
+            <span class="px-1 text-[11px] sm:text-xs">
+              <strong id="albumPageCurrent" class="text-[#C86D51]">1</strong> / <span id="albumPageTotal">38</span>
+            </span>
+            <button onclick="nextAlbumPage()" class="md:hidden p-1 text-stone-700 hover:text-[#C86D51]" aria-label="Próxima boneca">
+              <i class="ph ph-caret-right text-base"></i>
+            </button>
           </div>
           
-          <button id="closeAlbumBtn" onclick="closeDollAlbum()" class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 flex items-center justify-center transition-colors" title="Fechar Álbum (Esc)">
-            <i class="ph ph-x text-lg"></i>
+          <button id="closeAlbumBtn" onclick="closeDollAlbum()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-700 hover:text-stone-950 flex items-center justify-center transition-colors" title="Fechar Álbum (Esc)">
+            <i class="ph ph-x text-base sm:text-lg"></i>
           </button>
         </div>
+
       </div>
 
       <!-- Barra de Progresso Visual de Leitura -->
@@ -1142,80 +1124,80 @@
         <div id="albumProgressBar" class="bg-[#C86D51] h-1 transition-all duration-300" style="width: 2.63%;"></div>
       </div>
 
-      <!-- Palco de Leitura: Setas Laterais Flutuantes e Card Central -->
-      <div class="relative flex-1 overflow-y-auto p-3 sm:p-6 md:p-8 flex items-center justify-center">
+      <!-- Palco de Leitura: Setas Laterais no Desktop e Card Central -->
+      <div class="relative flex-1 overflow-y-auto p-2 sm:p-6 md:p-8 flex items-center justify-center">
         
-        <!-- Seta Flutuante Esquerda (Página Anterior) -->
-        <button id="albumPrevBtn" onclick="prevAlbumPage()" class="album-nav-arrow album-nav-prev" title="Página Anterior (Seta Esquerda)" aria-label="Boneca anterior">
+        <!-- Seta Flutuante Esquerda (Apenas Desktop para não cobrir imagem no mobile) -->
+        <button id="albumPrevBtn" onclick="prevAlbumPage()" class="hidden md:flex album-nav-arrow album-nav-prev" title="Página Anterior (Seta Esquerda)" aria-label="Boneca anterior">
           <i class="ph ph-caret-left text-2xl"></i>
         </button>
 
         <!-- Página Aberta do Álbum -->
-        <div id="albumPageContent" class="w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-white rounded-2xl p-5 sm:p-7 md:p-8 border border-stone-200 shadow-sm transition-all duration-300">
+        <div id="albumPageContent" class="w-full max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 md:gap-8 items-center bg-white rounded-2xl p-4 sm:p-7 md:p-8 border border-stone-200 shadow-sm transition-all duration-300">
           
           <!-- Lado Esquerdo: Foto da Boneca com Badge -->
           <div class="md:col-span-5 flex flex-col items-center">
-            <div class="relative w-full aspect-[3/4] max-h-[420px] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 shadow-inner group cursor-pointer" onclick="openLightboxFromAlbum()">
+            <div class="relative w-full aspect-[3/4] max-h-[300px] sm:max-h-[420px] rounded-xl overflow-hidden bg-stone-100 border border-stone-200 shadow-inner group cursor-pointer" onclick="openLightboxFromAlbum()">
               <img id="albumDollImage" src="images/bonecas/boneca-01.jpg" alt="Foto da Boneca" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-              <div class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded-full border border-stone-200 text-stone-900 caption-4 font-semibold shadow-sm">
+              <div class="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm px-2.5 py-0.5 rounded-full border border-stone-200 text-stone-900 caption-5 sm:caption-4 font-semibold shadow-sm">
                 <span id="albumDollBadge">Peça #01</span>
               </div>
-              <div class="absolute bottom-3 right-3 bg-stone-900/60 text-white p-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                <i class="ph ph-magnifying-glass-plus text-base"></i>
+              <div class="absolute bottom-2.5 right-2.5 bg-stone-900/60 text-white p-1 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                <i class="ph ph-magnifying-glass-plus text-sm"></i>
               </div>
             </div>
           </div>
 
           <!-- Lado Direito: Ficha Técnica Editorial -->
-          <div class="md:col-span-7 flex flex-col justify-between space-y-4">
+          <div class="md:col-span-7 flex flex-col justify-between space-y-3 sm:space-y-4">
             
-            <div class="space-y-2.5">
-              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#FDF5F2] border border-[#C86D51]/30 text-[#C86D51] caption-4 font-semibold">
+            <div class="space-y-1.5 sm:space-y-2.5">
+              <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-[#FDF5F2] border border-[#C86D51]/30 text-[#C86D51] caption-5 sm:caption-4 font-semibold">
                 <i class="ph ph-sparkle"></i> Confecção Manual Sob Medida
               </div>
 
-              <h3 id="albumDollName" class="heading-4 text-stone-900 leading-tight">Boneca Emília do Sítio</h3>
+              <h3 id="albumDollName" class="title-1 sm:heading-4 text-stone-900 leading-tight">Boneca Emília do Sítio</h3>
               
-              <p id="albumDollDesc" class="body-6 text-stone-600 leading-relaxed">
+              <p id="albumDollDesc" class="body-6 text-stone-600 text-xs sm:text-sm leading-relaxed">
                 Vestidinho tradicional em retalhos com botões coloridos costurados, cabelos em lã e olhos com trava de pressão anti asfixia.
               </p>
             </div>
 
             <!-- Dados Técnicos: Altura e Tipo de Linha -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
-              <div class="p-3 rounded-xl bg-stone-50 border border-stone-200">
-                <span class="caption-5 text-stone-500 uppercase tracking-wider block mb-0.5">
-                  <i class="ph ph-ruler text-sm text-[#C86D51] inline mr-1"></i> Altura
+            <div class="grid grid-cols-2 gap-2 pt-0.5">
+              <div class="p-2 sm:p-3 rounded-xl bg-stone-50 border border-stone-200">
+                <span class="caption-5 text-stone-500 uppercase tracking-wider block text-[10px] sm:text-xs mb-0.5">
+                  <i class="ph ph-ruler text-xs text-[#C86D51] inline mr-0.5"></i> Altura
                 </span>
-                <span id="albumDollHeight" class="title-4 text-stone-900 font-semibold">32 cm</span>
+                <span id="albumDollHeight" class="caption-3 sm:title-4 text-stone-900 font-semibold block truncate">32 cm</span>
               </div>
-              <div class="p-3 rounded-xl bg-stone-50 border border-stone-200">
-                <span class="caption-5 text-stone-500 uppercase tracking-wider block mb-0.5">
-                  <i class="ph ph-yarn text-sm text-[#C86D51] inline mr-1"></i> Linha Utilizada
+              <div class="p-2 sm:p-3 rounded-xl bg-stone-50 border border-stone-200">
+                <span class="caption-5 text-stone-500 uppercase tracking-wider block text-[10px] sm:text-xs mb-0.5">
+                  <i class="ph ph-yarn text-xs text-[#C86D51] inline mr-0.5"></i> Linha
                 </span>
-                <span id="albumDollYarn" class="body-6 text-stone-900 font-medium line-clamp-2">Fio 100% Algodão Penteado Biológico</span>
+                <span id="albumDollYarn" class="caption-3 sm:body-6 text-stone-900 font-medium block truncate">100% Algodão Puro</span>
               </div>
             </div>
 
             <!-- Faixa de Valor Estimado -->
-            <div class="p-3.5 rounded-xl bg-[#FDF5F2] border border-[#C86D51]/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div class="p-3 sm:p-3.5 rounded-xl bg-[#FDF5F2] border border-[#C86D51]/30 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2">
               <div>
-                <span class="caption-5 text-[#C86D51] uppercase tracking-wider block font-semibold">Valor Estimado</span>
-                <span id="albumDollPrice" class="heading-4 text-[#A44C33] font-bold">R$ 150 a R$ 190</span>
+                <span class="caption-5 text-[#C86D51] uppercase tracking-wider block font-semibold text-[10px]">Valor Estimado</span>
+                <span id="albumDollPrice" class="title-2 sm:heading-4 text-[#A44C33] font-bold">R$ 150 a R$ 190</span>
               </div>
-              <span class="caption-5 text-stone-500 max-w-[190px] leading-tight">
-                Valor médio de referência para encomenda sob medida.
+              <span class="caption-5 text-stone-500 text-[10px] sm:text-xs leading-tight">
+                Média de referência para encomenda sob medida.
               </span>
             </div>
 
-            <!-- Botões de Ação Específicos da Peça (Totalmente separados das setas de navegação lateral) -->
-            <div class="pt-1 flex flex-col sm:flex-row items-center gap-3">
-              <button id="albumOrderWhatsappBtn" onclick="orderCurrentDollViaWhatsapp()" class="w-full sm:flex-1 py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold caption-2 flex items-center justify-center gap-2 shadow-sm transition-all hover:shadow-md cursor-pointer">
-                <i class="ph ph-whatsapp-logo text-xl"></i>
-                <span>Encomendar pelo WhatsApp</span>
+            <!-- Botões de Ação -->
+            <div class="pt-1 flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+              <button id="albumOrderWhatsappBtn" onclick="orderCurrentDollViaWhatsapp()" class="w-full sm:flex-1 py-2.5 sm:py-3 px-4 rounded-xl bg-[#25D366] hover:bg-[#20ba59] text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-sm transition-all hover:shadow-md cursor-pointer">
+                <i class="ph ph-whatsapp-logo text-lg shrink-0"></i>
+                <span>Encomendar no WhatsApp</span>
               </button>
-              <button id="albumCustomizeBtn" onclick="customizeCurrentDollInSimulator()" class="w-full sm:w-auto py-3 px-4 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium caption-3 flex items-center justify-center gap-1.5 transition-colors cursor-pointer" title="Personalizar opções desta boneca no simulador">
-                <i class="ph ph-sliders text-base"></i>
+              <button id="albumCustomizeBtn" onclick="customizeCurrentDollInSimulator()" class="w-full sm:w-auto py-2 sm:py-3 px-3.5 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 font-medium text-xs flex items-center justify-center gap-1.5 transition-colors cursor-pointer" title="Personalizar opções no simulador">
+                <i class="ph ph-sliders text-sm shrink-0"></i>
                 <span>Simulador</span>
               </button>
             </div>
@@ -1224,24 +1206,24 @@
 
         </div>
 
-        <!-- Seta Flutuante Direita (Próxima Página) -->
-        <button id="albumNextBtn" onclick="nextAlbumPage()" class="album-nav-arrow album-nav-next" title="Próxima Página (Seta Direita)" aria-label="Próxima boneca">
+        <!-- Seta Flutuante Direita (Apenas Desktop) -->
+        <button id="albumNextBtn" onclick="nextAlbumPage()" class="hidden md:flex album-nav-arrow album-nav-next" title="Próxima Página (Seta Direita)" aria-label="Próxima boneca">
           <i class="ph ph-caret-right text-2xl"></i>
         </button>
 
       </div>
 
-      <!-- Barra Inferior: Dica de Folheamento e Miniaturas -->
-      <div class="px-5 sm:px-8 py-3 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-stone-500 caption-4">
-        <div class="flex items-center gap-2.5">
-          <span class="hidden sm:inline">Use as setas laterais ou o teclado <kbd class="px-1.5 py-0.5 bg-white border border-stone-200 rounded text-stone-700">←</kbd> <kbd class="px-1.5 py-0.5 bg-white border border-stone-200 rounded text-stone-700">→</kbd> para folhear</span>
+      <!-- Barra Inferior: Dica e Miniaturas -->
+      <div class="px-3 sm:px-8 py-2.5 sm:py-3 bg-stone-50 border-t border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-stone-500 caption-4">
+        <div class="flex items-center gap-2 text-[11px] sm:text-xs">
+          <span>Deslize na tela para folhear</span>
           <span class="text-stone-400 hidden sm:inline">•</span>
-          <span>Folheie sem compromisso</span>
+          <span class="hidden sm:inline">Folheie sem compromisso</span>
         </div>
         
-        <!-- Faixa com Miniaturas Clicáveis para Ir Direto à Peça -->
-        <div class="flex items-center gap-1.5 overflow-x-auto max-w-full sm:max-w-md py-1 px-1" id="albumThumbnailsContainer">
-          <!-- Gerado dinamicamente via JavaScript para todas as 38 peças -->
+        <!-- Faixa com Miniaturas Clicáveis -->
+        <div class="flex items-center gap-1.5 overflow-x-auto max-w-full sm:max-w-md py-0.5 px-0.5" id="albumThumbnailsContainer">
+          <!-- Gerado dinamicamente via JS -->
         </div>
       </div>
 
