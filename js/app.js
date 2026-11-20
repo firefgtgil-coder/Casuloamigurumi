@@ -1,26 +1,90 @@
 /**
- * Casulo Amigurumi - Interactive Experience Engine
- * Handles Customizer Simulator, Instagram Feed Filter, Like Particles, Audio Feedback & Modals
+ * Casulo Amigurumi - Script de Experiência e Conversão
+ * Conforme diretrizes da skill landing-page-design e taste-skill:
+ * - Sem hífens dentro de frases e textos
+ * - Tagline Reveal palavra por palavra via IntersectionObserver
+ * - Revelações no scroll
+ * - Menu móvel escalonado em 60ms
+ * - Simulador com as peças reais e mensagem de WhatsApp
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSoundEngine();
+  initTaglineReveal();
+  initScrollReveals();
   initCustomizer();
-  initInstagramFeed();
   initFaqAccordion();
-  initMobileMenu();
-  initHeroShowcase();
+  initMobileDrawer();
+  initAudioFeedback();
+  initLegalModals();
+  initImageLightbox();
+  initDollAlbum();
 });
 
 /* ==========================================================================
-   1. Audio Synthesizer (Zero external audio files, pure Web Audio API)
+   1. B11. Tagline Reveal Section
+   ========================================================================== */
+function initTaglineReveal() {
+  const words = document.querySelectorAll('.tagline-word');
+  if (!words.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    words.forEach(w => w.classList.add('revealed'));
+    return;
+  }
+
+  const wordObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        wordObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -15% 0px',
+    threshold: 0.1
+  });
+
+  words.forEach(word => wordObserver.observe(word));
+}
+
+/* ==========================================================================
+   2. B7. Scroll Reveals para Seções
+   ========================================================================== */
+function initScrollReveals() {
+  const sections = document.querySelectorAll('.scroll-reveal');
+  if (!sections.length) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    sections.forEach(s => s.classList.add('visible'));
+    return;
+  }
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, {
+    root: null,
+    rootMargin: '0px 0px -10% 0px',
+    threshold: 0.08
+  });
+
+  sections.forEach(sec => sectionObserver.observe(sec));
+}
+
+/* ==========================================================================
+   3. Sintetizador de Áudio Delicado (Web Audio API)
    ========================================================================== */
 let audioCtx = null;
 let soundEnabled = true;
 
-function initSoundEngine() {
+function initAudioFeedback() {
   const toggleBtn = document.getElementById('soundToggleBtn');
-  const soundIcon = document.getElementById('soundIcon');
+  const soundLabel = document.getElementById('soundLabel');
 
   function getAudioContext() {
     if (!audioCtx) {
@@ -35,7 +99,7 @@ function initSoundEngine() {
     return audioCtx;
   }
 
-  window.playDelicateChime = function(pitch = 520, type = 'sine') {
+  window.playSoftChime = function(pitch = 540) {
     if (!soundEnabled) return;
     try {
       const ctx = getAudioContext();
@@ -44,631 +108,562 @@ function initSoundEngine() {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
 
-      osc.type = type;
+      osc.type = 'sine';
       osc.frequency.setValueAtTime(pitch, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(pitch * 1.5, ctx.currentTime + 0.18);
+      osc.frequency.exponentialRampToValueAtTime(pitch * 1.35, ctx.currentTime + 0.16);
 
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+      gain.gain.setValueAtTime(0.05, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
 
       osc.start();
-      osc.stop(ctx.currentTime + 0.36);
-    } catch (e) {
-      // Audio autoplay policy fallback
-    }
+      osc.stop(ctx.currentTime + 0.31);
+    } catch (e) {}
   };
 
-  if (toggleBtn && soundIcon) {
+  if (toggleBtn && soundLabel) {
     toggleBtn.addEventListener('click', () => {
       soundEnabled = !soundEnabled;
+      soundLabel.textContent = soundEnabled ? 'Som' : 'Mudo';
       if (soundEnabled) {
-        soundIcon.innerHTML = `
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z" />
-        `;
-        playDelicateChime(640);
-        showToast("Efeitos sonoros ativados ✨");
-      } else {
-        soundIcon.innerHTML = `
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-        `;
-        showToast("Efeitos sonoros silenciados");
+        playSoftChime(640);
       }
     });
   }
 }
 
 /* ==========================================================================
-   2. Interactive Customizer Simulator ("Monte seu Casulo")
+   4. Simulador Interativo "Monte seu Casulo"
    ========================================================================== */
-const customizerState = {
-  category: 'maternidade',
-  size: 'medio',
+const simulatorState = {
+  category: 'boneca',
+  size: 'grande',
   palette: 'terrosos',
   extras: ['nome', 'caixa'],
-  targetPhone: '5511999999999' // Editable or placeholder WhatsApp
+  whatsappNumber: '5512935001344'
 };
 
-const categoryData = {
-  maternidade: {
-    title: 'Linha Maternidade & Bebê',
-    preview: 'Bichinho de Apego / Naninha / Porta de Maternidade',
-    desc: 'Peças com toque ultrassuave e olhos bordados ou com trava de segurança anti-asfixia. O primeiro companheiro de berço do bebê.',
-    baseMin: 95,
-    baseMax: 160,
-    time: '7 a 10 dias úteis'
-  },
-  pets: {
-    title: 'Pet Personalizado em Crochê',
-    preview: 'Cachorrinho ou Gatinho com as manchas e cores do seu pet',
-    desc: 'Homenagem emocionante reproduzida à mão a partir das fotos do seu animalzinho de estimação.',
-    baseMin: 120,
-    baseMax: 190,
-    time: '10 a 14 dias úteis'
-  },
+const simulatorCategories = {
   boneca: {
-    title: 'Mini Mim & Boneca Afetiva',
-    preview: 'Boneca com tom de pele, cabelo e roupinhas sob medida',
-    desc: 'Bonecas articuladas e macias que refletem quem você ama, com direito a troca de roupinhas artesanais.',
-    baseMin: 130,
-    baseMax: 210,
+    title: 'Boneca Emília & Personagens Clássicos',
+    desc: 'Boneca artesanal com vestido em retalhos, botões coloridos e cabelos de lã',
+    baseMin: 140,
+    baseMax: 220,
     time: '10 a 15 dias úteis'
   },
-  geek: {
-    title: 'Personagens, Heróis & Contos',
-    preview: 'Seu herói, desenho favorito ou santinha em amigurumi',
-    desc: 'Criação fofa e estilizada dos seus ícones da cultura pop e contos infantis com acabamento rico em detalhes.',
+  personagens: {
+    title: 'Linha Personagens (Hello Kitty, Kuromi, My Melody)',
+    desc: 'Criação fofa dos ícones colecionáveis com touquinhas e laços detalhados',
     baseMin: 110,
     baseMax: 180,
     time: '8 a 12 dias úteis'
   },
-  decor: {
-    title: 'Decoração Afetiva & Vasinhos',
-    preview: 'Cactos, suculentas e miniaturas florais que não murcham',
-    desc: 'O charme artesanal para estantes, mesas de trabalho e cantinhos especiais da casa sem precisar regar.',
-    baseMin: 65,
-    baseMax: 110,
-    time: '5 a 8 dias úteis'
+  chaveiro: {
+    title: 'Linha Mini & Chaveiros de Pelúcia (Pintinho Amigurumi)',
+    desc: 'Peça compacta em fio pelúcia ultrassuave para bolsas, chaves ou lembranças',
+    baseMin: 45,
+    baseMax: 75,
+    time: '4 a 7 dias úteis'
+  },
+  maternidade: {
+    title: 'Linha Maternidade & Ninho do Bebê',
+    desc: 'Naninha e bicho de apego com olhos reforçados para berço',
+    baseMin: 95,
+    baseMax: 160,
+    time: '7 a 10 dias úteis'
   }
 };
 
-const sizeData = {
-  mini: { label: 'Mini / Chaveiro (8 - 12 cm)', mult: 0.75, note: 'Ideal para lembrancinhas de batizado ou chaves' },
-  medio: { label: 'Médio Clássico (18 - 22 cm)', mult: 1.0, note: 'Tamanho mais pedido para abraços e naninhas' },
-  grande: { label: 'Destaque Decorativo (28 - 35 cm)', mult: 1.45, note: 'Impacto visual lindo para nichos e berços' }
+const simulatorSizes = {
+  mini: { label: 'Mini ou Chaveiro (8 a 12 cm)', mult: 0.65 },
+  medio: { label: 'Médio Clássico (18 a 22 cm)', mult: 1.0 },
+  grande: { label: 'Grande Destaque (28 a 35 cm)', mult: 1.45 }
 };
 
-const paletteData = {
-  terrosos: { label: 'Tons Terrosos & Boho', tags: 'Terracota, mostarda, verde sálvia e linho cru' },
-  pasteis: { label: 'Nuvem Suave (Pastéis)', tags: 'Rosa antigo, azul bebê, off-white e lavanda' },
-  vivos: { label: 'Alegre & Divertido', tags: 'Cores vibrantes, amarelo sol, turquesa e coral' },
-  neutros: { label: 'Minimalista & Neutro', tags: 'Cru, areia, cappuccino e toques dourados' }
+const simulatorPalettes = {
+  terrosos: { label: 'Cores Tradicionais da Peça (Originais do Modelo)' },
+  pasteis: { label: 'Tons Pastéis & Bebê (Rosa Chá, Azul Suave, Creme)' },
+  vivos: { label: 'Alegre & Vibrante (Amarelo, Vermelho e Verde)' },
+  personalizada: { label: 'Paleta Personalizada (Conforme o seu enxoval)' }
 };
 
-const extrasData = {
-  nome: { label: 'Bordar Nome Personalizado', price: 0, tag: 'Incluso no ateliê' },
-  guizo: { label: 'Guizo Sonoro Suave Interno', price: 15, tag: '+ R$ 15' },
-  caixa: { label: 'Embalagem de Presente Sensorial', price: 20, tag: '+ R$ 20' },
+const simulatorExtras = {
+  nome: { label: 'Bordado do Nome', price: 0, tag: 'Cortesia' },
+  caixa: { label: 'Caixa de Presente Sensorial', price: 20, tag: '+ R$ 20' },
+  guizo: { label: 'Guizo Sonoro Interno', price: 15, tag: '+ R$ 15' },
   cartao: { label: 'Cartão Caligrafado à Mão', price: 10, tag: '+ R$ 10' }
 };
 
 function initCustomizer() {
-  const categoryCards = document.querySelectorAll('[data-custom-cat]');
-  const sizeRadios = document.querySelectorAll('[data-custom-size]');
-  const paletteChips = document.querySelectorAll('[data-custom-palette]');
-  const extraCheckboxes = document.querySelectorAll('[data-custom-extra]');
+  const categoryOptions = document.querySelectorAll('[data-category-choice]');
+  const sizeOptions = document.querySelectorAll('[data-size-choice]');
+  const paletteOptions = document.querySelectorAll('[data-palette-choice]');
+  const extraInputs = document.querySelectorAll('[data-extra-choice]');
 
-  categoryCards.forEach(card => {
-    card.addEventListener('click', () => {
-      categoryCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      customizerState.category = card.getAttribute('data-custom-cat');
-      playDelicateChime(580);
-      updateSimulatorUI();
+  categoryOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      categoryOptions.forEach(c => c.classList.remove('active'));
+      opt.classList.add('active');
+      simulatorState.category = opt.getAttribute('data-category-choice');
+      if (window.playSoftChime) playSoftChime(560);
+      updateSimulatorSummary();
     });
   });
 
-  sizeRadios.forEach(radio => {
-    radio.addEventListener('click', () => {
-      sizeRadios.forEach(r => r.classList.remove('active'));
-      radio.classList.add('active');
-      customizerState.size = radio.getAttribute('data-custom-size');
-      playDelicateChime(620);
-      updateSimulatorUI();
+  sizeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      sizeOptions.forEach(s => s.classList.remove('active'));
+      opt.classList.add('active');
+      simulatorState.size = opt.getAttribute('data-size-choice');
+      if (window.playSoftChime) playSoftChime(600);
+      updateSimulatorSummary();
     });
   });
 
-  paletteChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      paletteChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      customizerState.palette = chip.getAttribute('data-custom-palette');
-      playDelicateChime(660);
-      updateSimulatorUI();
+  paletteOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      paletteOptions.forEach(p => p.classList.remove('active'));
+      opt.classList.add('active');
+      simulatorState.palette = opt.getAttribute('data-palette-choice');
+      if (window.playSoftChime) playSoftChime(640);
+      updateSimulatorSummary();
     });
   });
 
-  extraCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener('change', () => {
-      const extraVal = checkbox.getAttribute('data-custom-extra');
-      if (checkbox.checked) {
-        if (!customizerState.extras.includes(extraVal)) {
-          customizerState.extras.push(extraVal);
+  extraInputs.forEach(input => {
+    input.addEventListener('change', () => {
+      const val = input.getAttribute('data-extra-choice');
+      if (input.checked) {
+        if (!simulatorState.extras.includes(val)) {
+          simulatorState.extras.push(val);
         }
       } else {
-        customizerState.extras = customizerState.extras.filter(item => item !== extraVal);
+        simulatorState.extras = simulatorState.extras.filter(item => item !== val);
       }
-      playDelicateChime(720);
-      updateSimulatorUI();
+      if (window.playSoftChime) playSoftChime(700);
+      updateSimulatorSummary();
     });
   });
 
-  const whatsappBtn = document.getElementById('simSendWhatsappBtn');
-  const copyBtn = document.getElementById('simCopySummaryBtn');
-
-  if (whatsappBtn) {
-    whatsappBtn.addEventListener('click', () => {
-      const message = generateOrderSummaryText();
-      const encoded = encodeURIComponent(message);
-      // Pre-fill WhatsApp URL (defaults to sending or opening app)
-      const url = `https://api.whatsapp.com/send?phone=${customizerState.targetPhone}&text=${encoded}`;
+  const sendBtn = document.getElementById('simSendOrderBtn');
+  if (sendBtn) {
+    sendBtn.addEventListener('click', () => {
+      const orderText = buildOrderText();
+      const encoded = encodeURIComponent(orderText);
+      const url = `https://api.whatsapp.com/send?phone=${simulatorState.whatsappNumber}&text=${encoded}`;
       window.open(url, '_blank');
-      showToast("Abrindo WhatsApp com seu pedido montado! 🧶");
     });
   }
 
-  if (copyBtn) {
-    copyBtn.addEventListener('click', () => {
-      const message = generateOrderSummaryText();
-      if (navigator.clipboard) {
-        navigator.clipboard.writeText(message).then(() => {
-          showToast("Resumo copiado! Redirecionando para o Instagram @casulo.amigurumi... ✨");
-          setTimeout(() => {
-            window.open('https://www.instagram.com/casulo.amigurumi/', '_blank');
-          }, 1200);
-        });
-      } else {
-        window.open('https://www.instagram.com/casulo.amigurumi/', '_blank');
-      }
-    });
-  }
-
-  updateSimulatorUI();
+  updateSimulatorSummary();
 }
 
-function updateSimulatorUI() {
-  const catInfo = categoryData[customizerState.category];
-  const sizeInfo = sizeData[customizerState.size];
-  const palInfo = paletteData[customizerState.palette];
+function updateSimulatorSummary() {
+  const cat = simulatorCategories[simulatorState.category];
+  const size = simulatorSizes[simulatorState.size];
+  const pal = simulatorPalettes[simulatorState.palette];
 
-  // Calculate pricing
-  let extrasTotal = 0;
-  customizerState.extras.forEach(extraKey => {
-    if (extrasData[extraKey]) {
-      extrasTotal += extrasData[extraKey].price;
+  let extrasCost = 0;
+  simulatorState.extras.forEach(key => {
+    if (simulatorExtras[key]) {
+      extrasCost += simulatorExtras[key].price;
     }
   });
 
-  const estMin = Math.round(catInfo.baseMin * sizeInfo.mult + extrasTotal);
-  const estMax = Math.round(catInfo.baseMax * sizeInfo.mult + extrasTotal);
+  const finalMin = Math.round(cat.baseMin * size.mult + extrasCost);
+  const finalMax = Math.round(cat.baseMax * size.mult + extrasCost);
 
-  // Update DOM elements
-  const titleEl = document.getElementById('simPreviewTitle');
-  const descEl = document.getElementById('simPreviewDesc');
-  const sizeEl = document.getElementById('simPreviewSize');
-  const paletteEl = document.getElementById('simPreviewPalette');
-  const extrasEl = document.getElementById('simPreviewExtras');
-  const timeEl = document.getElementById('simPreviewTime');
-  const priceEl = document.getElementById('simPreviewPrice');
+  const titleEl = document.getElementById('summaryTitle');
+  const descEl = document.getElementById('summaryDesc');
+  const sizeEl = document.getElementById('summarySize');
+  const palEl = document.getElementById('summaryPalette');
+  const timeEl = document.getElementById('summaryTime');
+  const priceEl = document.getElementById('summaryPrice');
+  const extrasEl = document.getElementById('summaryExtras');
 
-  if (titleEl) titleEl.innerText = catInfo.title;
-  if (descEl) descEl.innerText = catInfo.preview;
-  if (sizeEl) sizeEl.innerText = sizeInfo.label;
-  if (paletteEl) paletteEl.innerText = palInfo.label;
-  if (timeEl) timeEl.innerText = catInfo.time;
-  if (priceEl) priceEl.innerText = `R$ ${estMin} a R$ ${estMax}`;
+  if (titleEl) titleEl.textContent = cat.title;
+  if (descEl) descEl.textContent = cat.desc;
+  if (sizeEl) sizeEl.textContent = size.label;
+  if (palEl) palEl.textContent = pal.label;
+  if (timeEl) timeEl.textContent = cat.time;
+  if (priceEl) priceEl.textContent = `R$ ${finalMin} a R$ ${finalMax}`;
 
   if (extrasEl) {
-    if (customizerState.extras.length === 0) {
-      extrasEl.innerHTML = `<span class="text-stone-400 italic">Nenhum adicional selecionado</span>`;
+    extrasEl.innerHTML = '';
+    if (simulatorState.extras.length === 0) {
+      extrasEl.innerHTML = '<span class="caption-4 text-stone-500">Nenhum toque extra selecionado</span>';
     } else {
-      extrasEl.innerHTML = customizerState.extras
-        .map(key => `<span class="inline-block bg-amber-50 text-amber-900 border border-amber-200 text-xs px-2.5 py-1 rounded-full font-medium mr-1.5 mb-1">${extrasData[key].label}</span>`)
-        .join('');
+      simulatorState.extras.forEach(key => {
+        const item = simulatorExtras[key];
+        const span = document.createElement('span');
+        span.className = 'caption-3 px-2 py-1 rounded bg-stone-100 text-stone-700 mr-1.5 mb-1 inline-block border border-stone-200';
+        span.textContent = `${item.label} (${item.tag})`;
+        extrasEl.appendChild(span);
+      });
     }
   }
 }
 
-function generateOrderSummaryText() {
-  const cat = categoryData[customizerState.category].title;
-  const size = sizeData[customizerState.size].label;
-  const pal = paletteData[customizerState.palette].label;
-  const extras = customizerState.extras.map(e => extrasData[e].label).join(', ') || 'Nenhum';
+function buildOrderText() {
+  const cat = simulatorCategories[simulatorState.category];
+  const size = simulatorSizes[simulatorState.size];
+  const pal = simulatorPalettes[simulatorState.palette];
+  const priceEl = document.getElementById('summaryPrice');
+  const priceStr = priceEl ? priceEl.textContent : '';
+  const extrasList = simulatorState.extras.map(k => simulatorExtras[k].label).join(', ') || 'Nenhum';
 
-  return `✨ Olá Ateliê Casulo Amigurumi (@casulo.amigurumi)! 🧶\n` +
-         `Acabei de montar uma simulação no site e quero consultar sua agenda de encomendas:\n\n` +
-         `• Categoria: ${cat}\n` +
-         `• Tamanho Desejado: ${size}\n` +
-         `• Paleta de Cores: ${pal}\n` +
-         `• Personalizações: ${extras}\n\n` +
-         `Poderiam me informar a data mais próxima para entrega e os detalhes para pagamento? Muito obrigado(a)!`;
+  return `Olá Ateliê Casulo Amigurumi!
+Montei meu pedido pelo site com os seguintes detalhes:
+
+Peça: ${cat.title}
+Tamanho: ${size.label}
+Paleta: ${pal.label}
+Toques Especiais: ${extrasList}
+Prazo previsto: ${cat.time}
+Estimativa base: ${priceStr}
+
+Gostaria de confirmar a encomenda e enviar minhas referências. Muito obrigado!`;
 }
 
 /* ==========================================================================
-   3. Interactive Instagram Feed (@casulo.amigurumi Gallery)
-   ========================================================================== */
-const instagramPosts = [
-  {
-    id: 1,
-    category: 'maternidade',
-    title: 'Naninha Carneirinho Sonhador',
-    subtitle: 'Companheiro perfeito para o sono seguro do bebê',
-    likes: 342,
-    image: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=800&q=80',
-    tags: ['#Maternidade', '#AmigurumiAfetivo', '#BebêChegando'],
-    description: 'Confeccionado com fio 100% algodão biológico antialérgico, com textura macia que traz aconchego e segurança sensorial aos primeiros meses de vida.',
-    details: 'Tamanho: 22cm • Olhinhos bordados à mão • Lavável na máquina'
-  },
-  {
-    id: 2,
-    category: 'pets',
-    title: 'Golden Retriever Afetivo',
-    subtitle: 'Homenagem eterna feita a partir de fotos reais',
-    likes: 518,
-    image: 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=800&q=80',
-    tags: ['#PetAmigurumi', '#AmorDeQuatroPatas', '#FeitoAMão'],
-    description: 'Cada manchinha, a cor dos olhos e o formato das orelhinhas foram estudados ponto a ponto para captar a alma e o carinho do cãozinho da família.',
-    details: 'Tamanho: 20cm sentado • Fio acetinado nobre • Coleirinha com placa gravada'
-  },
-  {
-    id: 3,
-    category: 'bonecas',
-    title: 'Boneca Sofia com Jardineira',
-    subtitle: 'Personalizada com cachos castanhos e boina de linho',
-    likes: 427,
-    image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=800&q=80',
-    tags: ['#MiniMim', '#BonecaDeCroche', '#PresenteDeMenina'],
-    description: 'Uma miniatura afetiva feita para a pequena Sofia. A jardineira pode ser retirada e trocada, estimulando o brincar lúdico e criativo.',
-    details: 'Tamanho: 28cm • Roupinhas trocáveis • Enchimento siliconado antiácaro'
-  },
-  {
-    id: 4,
-    category: 'maternidade',
-    title: 'Polvinho Calmante Terapêutico',
-    subtitle: 'Tentáculos que simulam o cordão umbilical',
-    likes: 619,
-    image: 'https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=80',
-    tags: ['#PolvoAmigurumi', '#UTINeonatal', '#PartoHumanizado'],
-    description: 'Baseado no famoso projeto escandinavo: os tentáculos enroladinhos lembram o útero materno, acalmando a frequência cardíaca do recém-nascido.',
-    details: 'Tamanho: 18cm • Padrão de segurança estrito • Esterilizável'
-  },
-  {
-    id: 5,
-    category: 'decor',
-    title: 'Jardim de Cactos e Suculentas',
-    subtitle: 'Beleza botânica que permanece sempre florida',
-    likes: 284,
-    image: 'https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=800&q=80',
-    tags: ['#DecorAfetiva', '#CactoAmigurumi', '#PlantasDeCroche'],
-    description: 'Plantinhas em vasinho rústico de cerâmica, com flores em tom mostarda e terracota. Perfeito para home office, estantes e presentes rápidos.',
-    details: 'Tamanho: 14cm com vasinho • Não precisa regar • Toque aveludado'
-  },
-  {
-    id: 6,
-    category: 'maternidade',
-    title: 'Guirlanda Enfeite de Porta Safari',
-    subtitle: 'Boas-vindas calorosas para o quarto de maternidade',
-    likes: 735,
-    image: 'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
-    tags: ['#PortaMaternidade', '#QuartoDeBebê', '#SafariBaby'],
-    description: 'Com leãozinho, girafinha e elefantinho em tons cáqui e folhagens secas, com o nome do bebê bordado em tricotin centralizado.',
-    details: 'Diâmetro: 28cm • Base em madeira natural • Gancho embutido invisível'
-  }
-];
-
-function initInstagramFeed() {
-  const grid = document.getElementById('instagramPostsGrid');
-  const filterButtons = document.querySelectorAll('[data-ig-filter]');
-
-  if (!grid) return;
-
-  function renderFeed(filter = 'todos') {
-    const filtered = filter === 'todos' 
-      ? instagramPosts 
-      : instagramPosts.filter(p => p.category === filter);
-
-    grid.innerHTML = filtered.map(post => `
-      <div class="ig-post-card group" data-post-id="${post.id}">
-        <div class="relative overflow-hidden aspect-square bg-stone-100 cursor-pointer" onclick="openPostModal(${post.id})">
-          <img 
-            src="${post.image}" 
-            alt="${post.title}" 
-            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          >
-          <div class="ig-overlay absolute inset-0 bg-stone-900/60 flex flex-col justify-between p-6 text-white">
-            <div class="flex justify-between items-center">
-              <span class="bg-white/20 backdrop-blur-md text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">
-                ${post.tags[0]}
-              </span>
-              <span class="text-white/80 text-sm flex items-center gap-1">
-                <svg class="w-4 h-4 fill-current text-amber-400" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                Destaque
-              </span>
-            </div>
-            
-            <div class="text-center">
-              <p class="font-serif text-xl font-bold mb-1">${post.title}</p>
-              <p class="text-xs text-stone-200 line-clamp-2">${post.subtitle}</p>
-              <span class="mt-3 inline-flex items-center gap-1.5 text-xs font-medium text-amber-300 underline underline-offset-4">
-                Toque para ver detalhes & foto ampliada
-              </span>
-            </div>
-
-            <div class="flex justify-between items-center pt-2 border-t border-white/20 text-xs text-stone-200">
-              <span class="flex items-center gap-1">
-                <svg class="w-4 h-4 text-rose-400 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-                ${post.likes} curtidas
-              </span>
-              <span>@casulo.amigurumi</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="p-5">
-          <div class="flex items-center justify-between mb-2">
-            <h4 class="font-bold text-stone-900 group-hover:text-amber-800 transition-colors text-base">${post.title}</h4>
-            <button 
-              class="like-btn text-stone-400 hover:text-rose-500 transition-colors flex items-center gap-1 text-sm font-medium" 
-              onclick="handleLike(event, ${post.id})"
-              title="Curtir esta criação"
-            >
-              <svg class="w-5 h-5 transition-transform active:scale-125" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-              <span class="like-count">${post.likes}</span>
-            </button>
-          </div>
-          <p class="text-xs text-stone-600 line-clamp-2 mb-3">${post.description}</p>
-          
-          <div class="flex items-center justify-between pt-3 border-t border-stone-100">
-            <span class="text-[11px] font-medium text-stone-400">${post.tags.slice(0, 2).join(' ')}</span>
-            <a 
-              href="https://www.instagram.com/casulo.amigurumi/" 
-              target="_blank" 
-              class="text-xs font-semibold text-rose-600 hover:text-rose-700 flex items-center gap-1"
-            >
-              Instagram ↗
-            </a>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => {
-        b.classList.remove('bg-stone-900', 'text-white');
-        b.classList.add('bg-white', 'text-stone-700');
-      });
-      btn.classList.add('bg-stone-900', 'text-white');
-      btn.classList.remove('bg-white', 'text-stone-700');
-
-      const filter = btn.getAttribute('data-ig-filter');
-      playDelicateChime(600);
-      renderFeed(filter);
-    });
-  });
-
-  renderFeed();
-}
-
-// Like Handler with Heart Burst Particles
-window.handleLike = function(e, postId) {
-  e.stopPropagation();
-  const btn = e.currentTarget;
-  const countSpan = btn.querySelector('.like-count');
-  const svg = btn.querySelector('svg');
-
-  const post = instagramPosts.find(p => p.id === postId);
-  if (!post) return;
-
-  post.likes += 1;
-  countSpan.innerText = post.likes;
-
-  svg.classList.add('text-rose-500');
-  svg.setAttribute('fill', 'currentColor');
-
-  // Spawn heart burst animation
-  const rect = btn.getBoundingClientRect();
-  const heart = document.createElement('div');
-  heart.className = 'particle-heart';
-  heart.innerHTML = '❤️';
-  heart.style.left = `${rect.left + rect.width / 2}px`;
-  heart.style.top = `${rect.top}px`;
-  document.body.appendChild(heart);
-
-  playDelicateChime(780, 'triangle');
-
-  setTimeout(() => {
-    heart.remove();
-  }, 1000);
-};
-
-// Modal Lightbox
-window.openPostModal = function(postId) {
-  const post = instagramPosts.find(p => p.id === postId);
-  if (!post) return;
-
-  const modal = document.getElementById('postLightboxModal');
-  const modalImg = document.getElementById('modalImage');
-  const modalTitle = document.getElementById('modalTitle');
-  const modalSubtitle = document.getElementById('modalSubtitle');
-  const modalDesc = document.getElementById('modalDescription');
-  const modalDetails = document.getElementById('modalDetails');
-  const modalTags = document.getElementById('modalTags');
-  const modalOrderBtn = document.getElementById('modalOrderBtn');
-
-  if (modalImg) modalImg.src = post.image;
-  if (modalTitle) modalTitle.innerText = post.title;
-  if (modalSubtitle) modalSubtitle.innerText = post.subtitle;
-  if (modalDesc) modalDesc.innerText = post.description;
-  if (modalDetails) modalDetails.innerText = post.details;
-  if (modalTags) modalTags.innerText = post.tags.join('  ');
-
-  if (modalOrderBtn) {
-    modalOrderBtn.onclick = () => {
-      closePostModal();
-      // Scroll smoothly to simulator or open whatsapp
-      const msg = encodeURIComponent(`Olá Casulo Amigurumi! Amei a peça "${post.title}" que vi no site e gostaria de saber se é possível encomendar uma igualzinha.`);
-      window.open(`https://api.whatsapp.com/send?phone=${customizerState.targetPhone}&text=${msg}`, '_blank');
-    };
-  }
-
-  playDelicateChime(640);
-  modal.classList.add('active');
-  document.body.style.overflow = 'hidden';
-};
-
-window.closePostModal = function() {
-  const modal = document.getElementById('postLightboxModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
-};
-
-/* ==========================================================================
-   4. FAQ Accordion
+   5. FAQ Accordion
    ========================================================================== */
 function initFaqAccordion() {
-  const faqItems = document.querySelectorAll('.faq-item');
+  const triggers = document.querySelectorAll('.faq-trigger');
 
-  faqItems.forEach(item => {
-    const trigger = item.querySelector('.faq-trigger');
-    const content = item.querySelector('.faq-content');
-    const icon = item.querySelector('.faq-icon');
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const content = trigger.nextElementSibling;
+      const icon = trigger.querySelector('.faq-icon');
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 
-    if (trigger && content) {
-      trigger.addEventListener('click', () => {
-        const isOpen = !content.classList.contains('hidden');
-
-        // Close all
-        faqItems.forEach(other => {
-          const otherContent = other.querySelector('.faq-content');
+      triggers.forEach(other => {
+        if (other !== trigger) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherContent = other.nextElementSibling;
           const otherIcon = other.querySelector('.faq-icon');
           if (otherContent) otherContent.classList.add('hidden');
           if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
-        });
-
-        if (!isOpen) {
-          content.classList.remove('hidden');
-          if (icon) icon.style.transform = 'rotate(180deg)';
-          playDelicateChime(560);
         }
       });
-    }
-  });
-}
 
-/* ==========================================================================
-   5. Mobile Menu Toggle
-   ========================================================================== */
-function initMobileMenu() {
-  const menuBtn = document.getElementById('mobileMenuBtn');
-  const closeBtn = document.getElementById('closeMobileMenuBtn');
-  const drawer = document.getElementById('mobileDrawer');
-  const drawerBackdrop = document.getElementById('mobileDrawerBackdrop');
-  const navLinks = document.querySelectorAll('.mobile-nav-link');
-
-  function openMenu() {
-    drawer.classList.remove('translate-x-full');
-    drawerBackdrop.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMenu() {
-    drawer.classList.add('translate-x-full');
-    drawerBackdrop.classList.add('hidden');
-    document.body.style.overflow = 'auto';
-  }
-
-  if (menuBtn) menuBtn.addEventListener('click', openMenu);
-  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
-  if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeMenu);
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
-}
-
-/* ==========================================================================
-   6. Hero Showcase Micro-Interactions
-   ========================================================================== */
-function initHeroShowcase() {
-  const heroTabs = document.querySelectorAll('[data-hero-tab]');
-  const heroMainImg = document.getElementById('heroMainImg');
-  const heroTagBadge = document.getElementById('heroTagBadge');
-
-  const heroShowcaseData = {
-    maternidade: {
-      img: 'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=900&q=80',
-      tag: 'Linha Maternidade & Ninho'
-    },
-    pets: {
-      img: 'https://images.unsplash.com/photo-1584824486509-112e4181ff6b?auto=format&fit=crop&w=900&q=80',
-      tag: 'Pets Afetivos & Miniaturas'
-    },
-    bonecas: {
-      img: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=900&q=80',
-      tag: 'Bonecas Personalizadas'
-    }
-  };
-
-  heroTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      heroTabs.forEach(t => {
-        t.classList.remove('bg-amber-600', 'text-white', 'font-semibold');
-        t.classList.add('bg-white/80', 'text-stone-700');
-      });
-      tab.classList.add('bg-amber-600', 'text-white', 'font-semibold');
-      tab.classList.remove('bg-white/80', 'text-stone-700');
-
-      const cat = tab.getAttribute('data-hero-tab');
-      if (heroShowcaseData[cat] && heroMainImg) {
-        heroMainImg.style.opacity = '0';
-        setTimeout(() => {
-          heroMainImg.src = heroShowcaseData[cat].img;
-          if (heroTagBadge) heroTagBadge.innerText = heroShowcaseData[cat].tag;
-          heroMainImg.style.opacity = '1';
-        }, 150);
-        playDelicateChime(620);
+      if (isExpanded) {
+        trigger.setAttribute('aria-expanded', 'false');
+        if (content) content.classList.add('hidden');
+        if (icon) icon.style.transform = 'rotate(0deg)';
+      } else {
+        trigger.setAttribute('aria-expanded', 'true');
+        if (content) content.classList.remove('hidden');
+        if (icon) icon.style.transform = 'rotate(180deg)';
+        if (window.playSoftChime) playSoftChime(580);
       }
     });
   });
 }
 
 /* ==========================================================================
-   Toast Notification Helper
+   6. Menu Móvel Escalonado (60ms Stagger)
    ========================================================================== */
-function showToast(text) {
-  let toast = document.getElementById('casuloToast');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'casuloToast';
-    toast.className = 'fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] bg-stone-900/90 backdrop-blur-md text-white text-sm px-5 py-3 rounded-full shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-3';
-    document.body.appendChild(toast);
+function initMobileDrawer() {
+  const openBtn = document.getElementById('openMobileMenuBtn');
+  const closeBtn = document.getElementById('closeMobileMenuBtn');
+  const backdrop = document.getElementById('mobileDrawerBackdrop');
+  const drawer = document.getElementById('mobileDrawer');
+  const links = document.querySelectorAll('.drawer-link-item');
+
+  function openMenu() {
+    if (!backdrop || !drawer) return;
+    backdrop.classList.remove('hidden');
+    drawer.classList.remove('translate-x-full');
+    drawer.classList.add('open');
+
+    links.forEach((link, idx) => {
+      link.style.transitionDelay = `${idx * 60}ms`;
+    });
   }
 
-  toast.innerText = text;
-  toast.classList.remove('opacity-0', 'translate-y-3', 'pointer-events-none');
-  toast.classList.add('opacity-100', 'translate-y-0');
+  function closeMenu() {
+    if (!backdrop || !drawer) return;
+    drawer.classList.add('translate-x-full');
+    drawer.classList.remove('open');
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+    }, 300);
 
-  setTimeout(() => {
-    toast.classList.add('opacity-0', 'translate-y-3', 'pointer-events-none');
-    toast.classList.remove('opacity-100', 'translate-y-0');
-  }, 3200);
+    links.forEach(link => {
+      link.style.transitionDelay = '0ms';
+    });
+  }
+
+  if (openBtn) openBtn.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (backdrop) backdrop.addEventListener('click', closeMenu);
+
+  links.forEach(l => {
+    l.addEventListener('click', closeMenu);
+  });
+}
+
+/* ==========================================================================
+   7. Modais Legais (Privacidade e Termos)
+   ========================================================================== */
+function initLegalModals() {
+  const modal = document.getElementById('legalModal');
+  const modalTitle = document.getElementById('legalModalTitle');
+  const modalBody = document.getElementById('legalModalBody');
+  const closeBtn = document.getElementById('closeLegalModalBtn');
+  const backdrop = document.getElementById('legalModalBackdrop');
+
+  window.openLegalModal = function(type) {
+    if (!modal || !modalTitle || !modalBody) return;
+    if (type === 'privacidade') {
+      modalTitle.textContent = 'Política de Privacidade';
+      modalBody.innerHTML = `
+        <p class="body-5 text-stone-700 mb-3">No Ateliê Casulo Amigurumi, respeitamos a sua privacidade. Os dados informados pelo simulador (como nome, modelo escolhido e contato via WhatsApp) são utilizados exclusivamente para a confecção artesanal e o envio seguro da sua encomenda.</p>
+        <p class="body-5 text-stone-700 mb-3">Não compartilhamos informações com terceiros nem realizamos cobranças automáticas. Toda a conversa ocorre de forma transparente e direta com a artesã.</p>
+      `;
+    } else {
+      modalTitle.textContent = 'Termos de Encomenda e Entrega';
+      modalBody.innerHTML = `
+        <p class="body-5 text-stone-700 mb-3">Cada amigurumi é confeccionado manualmente com fio 100% algodão hipoalergênico e travas de segurança reforçadas.</p>
+        <p class="body-5 text-stone-700 mb-3">Antes de despachar o pacote nos Correios, enviamos fotos e vídeos em alta resolução para a sua validação. A postagem só é feita após a sua aprovação total.</p>
+      `;
+    }
+    modal.classList.remove('hidden');
+    if (backdrop) backdrop.classList.remove('hidden');
+  };
+
+  function closeModal() {
+    if (modal) modal.classList.add('hidden');
+    if (backdrop) backdrop.classList.add('hidden');
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeModal);
+  if (backdrop) backdrop.addEventListener('click', closeModal);
+}
+
+/* ==========================================================================
+   8. Lightbox para Fotos Reais em Alta Resolução
+   ========================================================================== */
+function initImageLightbox() {
+  const lightbox = document.getElementById('imageLightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const closeBtn = document.getElementById('closeLightboxBtn');
+  const backdrop = document.getElementById('lightboxBackdrop');
+
+  window.openLightbox = function(src, title) {
+    if (!lightbox || !lightboxImg) return;
+    lightboxImg.src = src;
+    if (lightboxTitle) lightboxTitle.textContent = title || 'Peça Artesanal Casulo Amigurumi';
+    lightbox.classList.remove('hidden');
+    if (backdrop) backdrop.classList.remove('hidden');
+    if (window.playSoftChime) playSoftChime(620);
+  };
+
+  function closeLightbox() {
+    if (lightbox) lightbox.classList.add('hidden');
+    if (backdrop) backdrop.classList.add('hidden');
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  if (backdrop) backdrop.addEventListener('click', closeLightbox);
+}
+
+/* ==========================================================================
+   9. Álbum Digital de Bonecas do Ateliê (38 Peças)
+   ========================================================================== */
+let currentAlbumIndex = 0;
+
+function initDollAlbum() {
+  const modal = document.getElementById('dollAlbumModal');
+  const backdrop = document.getElementById('albumBackdrop');
+  const thumbsContainer = document.getElementById('albumThumbnailsContainer');
+  
+  if (!window.dollsCatalog || !window.dollsCatalog.length) {
+    console.warn('Catálogo de bonecas não encontrado.');
+    return;
+  }
+
+  const catalog = window.dollsCatalog;
+
+  // Renderizar miniaturas na barra inferior
+  if (thumbsContainer) {
+    thumbsContainer.innerHTML = '';
+    catalog.forEach((doll, idx) => {
+      const thumb = document.createElement('button');
+      thumb.className = `album-thumb-item ${idx === 0 ? 'active' : ''}`;
+      thumb.setAttribute('aria-label', `Ir para ${doll.nome}`);
+      thumb.setAttribute('title', `${doll.id}. ${doll.nome}`);
+      thumb.onclick = () => {
+        currentAlbumIndex = idx;
+        renderAlbumPage(currentAlbumIndex);
+      };
+
+      const img = document.createElement('img');
+      img.src = doll.foto;
+      img.alt = doll.nome;
+      img.loading = 'lazy';
+
+      thumb.appendChild(img);
+      thumbsContainer.appendChild(thumb);
+    });
+  }
+
+  // Navegação por teclado (Setas Esquerda e Direita e Esc)
+  window.addEventListener('keydown', (e) => {
+    if (!modal || modal.classList.contains('hidden')) return;
+
+    if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+      e.preventDefault();
+      nextAlbumPage();
+    } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      prevAlbumPage();
+    } else if (e.key === 'Escape') {
+      closeDollAlbum();
+    }
+  });
+
+  // Suporte a deslize no celular (Touch Swipe)
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const pageStage = document.getElementById('albumPageContent');
+
+  if (pageStage) {
+    pageStage.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    pageStage.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+  }
+
+  function handleSwipe() {
+    const swipeDistance = touchEndX - touchStartX;
+    if (swipeDistance < -45) {
+      nextAlbumPage();
+    } else if (swipeDistance > 45) {
+      prevAlbumPage();
+    }
+  }
+
+  window.openDollAlbum = function(index = 0) {
+    if (!modal) return;
+    currentAlbumIndex = Math.max(0, Math.min(catalog.length - 1, index));
+    renderAlbumPage(currentAlbumIndex);
+
+    modal.classList.remove('hidden');
+    if (backdrop) backdrop.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    if (window.playSoftChime) playSoftChime(580);
+  };
+
+  window.closeDollAlbum = function() {
+    if (!modal) return;
+    modal.classList.add('hidden');
+    if (backdrop) backdrop.classList.add('hidden');
+    document.body.style.overflow = '';
+  };
+
+  window.renderAlbumPage = function(index) {
+    const doll = catalog[index];
+    if (!doll) return;
+
+    const pageCurrent = document.getElementById('albumPageCurrent');
+    const pageTotal = document.getElementById('albumPageTotal');
+    const progressBar = document.getElementById('albumProgressBar');
+    const dollImg = document.getElementById('albumDollImage');
+    const dollBadge = document.getElementById('albumDollBadge');
+    const dollName = document.getElementById('albumDollName');
+    const dollDesc = document.getElementById('albumDollDesc');
+    const dollHeight = document.getElementById('albumDollHeight');
+    const dollYarn = document.getElementById('albumDollYarn');
+    const dollPrice = document.getElementById('albumDollPrice');
+    const pageContent = document.getElementById('albumPageContent');
+
+    if (pageCurrent) pageCurrent.textContent = String(doll.id);
+    if (pageTotal) pageTotal.textContent = String(catalog.length);
+    if (progressBar) progressBar.style.width = `${((doll.id) / catalog.length) * 100}%`;
+
+    if (dollImg) {
+      dollImg.src = doll.foto;
+      dollImg.alt = doll.nome;
+    }
+    if (dollBadge) dollBadge.textContent = `Peça #${String(doll.id).padStart(2, '0')}`;
+    if (dollName) dollName.textContent = doll.nome;
+    if (dollDesc) dollDesc.textContent = doll.caracteristicas;
+    if (dollHeight) dollHeight.textContent = doll.altura;
+    if (dollYarn) dollYarn.textContent = doll.tipoLinha;
+    if (dollPrice) dollPrice.textContent = doll.valorAproximado;
+
+    // Atualizar miniaturas ativas
+    if (thumbsContainer) {
+      const thumbs = thumbsContainer.querySelectorAll('.album-thumb-item');
+      thumbs.forEach((t, i) => {
+        if (i === index) {
+          t.classList.add('active');
+          t.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          t.classList.remove('active');
+        }
+      });
+    }
+
+    // Efeito sutil de virar de página
+    if (pageContent) {
+      pageContent.classList.remove('page-flip-anim');
+      void pageContent.offsetWidth; // Forçar reflow para reiniciar animação
+      pageContent.classList.add('page-flip-anim');
+    }
+  };
+
+  window.nextAlbumPage = function() {
+    currentAlbumIndex = (currentAlbumIndex + 1) % catalog.length;
+    renderAlbumPage(currentAlbumIndex);
+    if (window.playSoftChime) playSoftChime(640);
+  };
+
+  window.prevAlbumPage = function() {
+    currentAlbumIndex = (currentAlbumIndex - 1 + catalog.length) % catalog.length;
+    renderAlbumPage(currentAlbumIndex);
+    if (window.playSoftChime) playSoftChime(520);
+  };
+
+  window.orderCurrentDollViaWhatsapp = function() {
+    const doll = catalog[currentAlbumIndex];
+    if (!doll) return;
+
+    const mensagem =
+      `Olá Ateliê Casulo Amigurumi! Amei a *${doll.nome}* que vi no Álbum Digital (Página ${doll.id} de ${catalog.length}).\n\n` +
+      `• Altura: ${doll.altura}\n` +
+      `• Linha: ${doll.tipoLinha}\n` +
+      `• Características: ${doll.caracteristicas}\n` +
+      `• Faixa estimada: ${doll.valorAproximado}\n\n` +
+      `Gostaria de verificar a confecção sob medida! Como podemos combinar os detalhes da encomenda?`;
+
+    const url = `https://wa.me/5512935001344?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
+  };
+
+  window.customizeCurrentDollInSimulator = function() {
+    closeDollAlbum();
+    const simSection = document.getElementById('simulador');
+    if (simSection) {
+      simSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  window.openLightboxFromAlbum = function() {
+    const doll = catalog[currentAlbumIndex];
+    if (doll && window.openLightbox) {
+      window.openLightbox(doll.foto, `${doll.nome} • ${doll.altura}`);
+    }
+  };
 }
 

@@ -18,8 +18,11 @@ const MIME_TYPES = {
 };
 
 const server = http.createServer((req, res) => {
-  // CORS & Cache headers
+  // CORS & No-Cache headers to ensure instant updates
   res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+  res.setHeader('Pragma', 'no-cache');
+  res.setHeader('Expires', '0');
 
   let safePath = path.normalize(req.url.split('?')[0]);
   if (safePath === '/' || safePath === '\\') {

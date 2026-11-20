@@ -52,9 +52,9 @@ node -e "const http=require('http'),fs=require('fs'),path=require('path');http.c
 ## ⚙️ Personalização Simples
 
 ### Alterar o Número de WhatsApp:
-No arquivo `js/app.js`, altere a linha 68:
+No arquivo `js/app.js`, altere a linha com `whatsappNumber`:
 ```javascript
-targetPhone: '5511999999999' // Substitua pelo DDD + Número do WhatsApp do Ateliê Casulo
+whatsappNumber: '5512935001344' // WhatsApp do Ateliê Casulo (+55 12 93500-1344)
 ```
 
 ### Alterar ou Adicionar Fotos:
